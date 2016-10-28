@@ -20,7 +20,7 @@ public class MainActivity extends BaseActivity implements MainView {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        this.initializeInjector();
+
 
         final EditText editText = (EditText) findViewById(R.id.edittext);
 
@@ -54,7 +54,9 @@ public class MainActivity extends BaseActivity implements MainView {
     }
 
     @Override
-    protected void onActivityCreated() {
+    protected void onActivitySetup() {
+        this.initializeInjector();
+        activityComponent.inject(this);
         mainPresenter.attachView(this);
     }
 }

@@ -1,7 +1,6 @@
 package de.xappo.presenterinjection;
 
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
@@ -15,10 +14,10 @@ public abstract class BaseActivity extends AppCompatActivity{
     protected void onCreate(@Nullable final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.getApplicationComponent().inject(this);
-        onActivityCreated();
+        onActivitySetup();
     }
 
-    protected abstract void onActivityCreated();
+    protected abstract void onActivitySetup();
 
     protected ApplicationComponent getApplicationComponent() {
         return ((AndroidApplication) getApplication()).getApplicationComponent();
