@@ -4,8 +4,8 @@ import android.support.annotation.NonNull;
 
 import javax.inject.Inject;
 
+import de.xappo.presenterinjection.di.PerFragment;
 import de.xappo.presenterinjection.interactor.MainInteractor;
-import de.xappo.presenterinjection.di.PerActivity;
 import de.xappo.presenterinjection.model.Person;
 import de.xappo.presenterinjection.view.MainView;
 
@@ -13,7 +13,7 @@ import de.xappo.presenterinjection.view.MainView;
  * Created by knoppik on 27.10.16.
  */
 
-@PerActivity
+@PerFragment
 public class MainPresenter implements MvpPresenter<MainView> {
     private MainView mainView;
     private MainInteractor mainInteractor;

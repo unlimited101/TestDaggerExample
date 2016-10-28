@@ -14,11 +14,11 @@ import android.widget.TextView;
 
 import javax.inject.Inject;
 
-import de.xappo.presenterinjection.presenter.MainPresenter;
 import de.xappo.presenterinjection.R;
 import de.xappo.presenterinjection.base.BaseFragment;
-import de.xappo.presenterinjection.di.components.ActivityComponent;
+import de.xappo.presenterinjection.di.components.FragmentComponent;
 import de.xappo.presenterinjection.model.Person;
+import de.xappo.presenterinjection.presenter.MainPresenter;
 
 
 /**
@@ -76,7 +76,7 @@ public class MainFragment extends BaseFragment implements MainView {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
-        this.getComponent(ActivityComponent.class).inject(this);
+        this.getComponent(FragmentComponent.class).inject(this);
     }
 
     @Override

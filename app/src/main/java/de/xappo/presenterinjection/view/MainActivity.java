@@ -2,18 +2,25 @@ package de.xappo.presenterinjection.view;
 
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+
 
 import de.xappo.presenterinjection.R;
 import de.xappo.presenterinjection.base.BaseActivity;
 import de.xappo.presenterinjection.di.HasComponent;
-import de.xappo.presenterinjection.di.components.ActivityComponent;
-import de.xappo.presenterinjection.di.components.DaggerActivityComponent;
+
+
+import de.xappo.presenterinjection.di.components.DaggerFragmentComponent;
+import de.xappo.presenterinjection.di.components.FragmentComponent;
+import de.xappo.presenterinjection.di.modules.FragmentModule;
 
 
 public class MainActivity extends BaseActivity implements MainFragment.OnFragmentInteractionListener,
-        HasComponent<ActivityComponent> {
+        HasComponent<FragmentComponent> {
 
-    private ActivityComponent activityComponent;
+
+    private FragmentComponent fragmentComponent;
+    private Fragment currentFragment;
 
 
     @Override
@@ -22,23 +29,25 @@ public class MainActivity extends BaseActivity implements MainFragment.OnFragmen
         setContentView(R.layout.activity_main);
 
         if (savedInstanceState == null) {
-            addFragment(R.id.fragmentContainer, new MainFragment());
+            currentFragment = new MainFragment();
+            addFragment(R.id.fragmentContainer, currentFragment);
         }
 
     }
 
 
     private void initializeInjector() {
-        this.activityComponent = DaggerActivityComponent.builder()
+        this.fragmentComponent = DaggerFragmentComponent.builder()
                 .applicationComponent(getApplicationComponent())
                 .activityModule(getActivityModule())
+                .fragmentModule(getFragmentModule())
                 .build();
     }
 
     @Override
     protected void onActivitySetup() {
         this.initializeInjector();
-        activityComponent.inject(this);
+        fragmentComponent.inject(this);
 
     }
 
@@ -47,7 +56,12 @@ public class MainActivity extends BaseActivity implements MainFragment.OnFragmen
 
     }
 
-    @Override public ActivityComponent getComponent() {
-        return activityComponent;
+    @Override public FragmentComponent getComponent() {
+        return fragmentComponent;
+    }
+
+
+    public FragmentModule getFragmentModule() {
+        return new FragmentModule(currentFragment);
     }
 }
