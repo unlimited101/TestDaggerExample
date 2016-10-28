@@ -14,5 +14,5 @@ public interface ActivityComponent {
     Activity activity();
 
     void inject(MainActivity mainActivity);
-
+    void inject(MainFragment mainFragment);
 }

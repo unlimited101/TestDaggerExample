@@ -1,50 +1,25 @@
 package de.xappo.presenterinjection;
 
+import android.net.Uri;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
-
-import javax.inject.Inject;
 
 
-public class MainActivity extends BaseActivity implements MainView {
+public class MainActivity extends BaseActivity implements MainFragment.OnFragmentInteractionListener, HasComponent<ActivityComponent>{
 
     private ActivityComponent activityComponent;
 
-    @Inject
-    MainPresenter mainPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-        final EditText editText = (EditText) findViewById(R.id.edittext);
-
-        Button button = (Button) findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(final View v) {
-                mainPresenter.onClick(editText.getText().toString());
-            }
-        });
+        if (savedInstanceState == null) {
+            addFragment(R.id.fragmentContainer, new MainFragment());
+        }
 
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        mainPresenter.detachView();
-    }
-
-    @Override
-    public void updatePerson(final Person person) {
-        TextView textView = (TextView) findViewById(R.id.textview);
-        textView.setText("Hello " + person.getName());
-    }
 
     private void initializeInjector() {
         this.activityComponent = DaggerActivityComponent.builder()
@@ -57,6 +32,15 @@ public class MainActivity extends BaseActivity implements MainView {
     protected void onActivitySetup() {
         this.initializeInjector();
         activityComponent.inject(this);
-        mainPresenter.attachView(this);
+
+    }
+
+    @Override
+    public void onFragmentInteraction(final Uri uri) {
+
+    }
+
+    @Override public ActivityComponent getComponent() {
+        return activityComponent;
     }
 }
