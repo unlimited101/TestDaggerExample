@@ -11,14 +11,15 @@ import javax.inject.Inject;
 @PerActivity
 public class MainPresenter implements MvpPresenter<MainView> {
     private MainView mainView;
+    private MainInteractor mainInteractor;
 
     @Inject
-    public MainPresenter() {
-
+    public MainPresenter(MainInteractor mainInteractor) {
+        this.mainInteractor = mainInteractor;
     }
 
     public void onClick(String name) {
-        Person person = new Person(name);
+        Person person = mainInteractor.createPerson(name);
         mainView.updatePerson(person);
     }
 

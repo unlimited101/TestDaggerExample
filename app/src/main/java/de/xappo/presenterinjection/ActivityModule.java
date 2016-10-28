@@ -24,5 +24,8 @@ public class ActivityModule {
         return this.activity;
     }
 
+    @Provides @PerActivity MainInteractor provideMainInteractor () {
+        return new MainInteractor();
+    }
 
 }
