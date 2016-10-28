@@ -9,7 +9,7 @@
               android:paddingRight="@dimen/activity_horizontal_margin"
               android:paddingTop="@dimen/activity_vertical_margin"
               android:orientation="vertical"
-              tools:context="de.xappo.presenterinjection.MainFragment">
+              tools:context="de.xappo.presenterinjection.view.MainFragment">
 
     <EditText
         android:id="@+id/edittext"
