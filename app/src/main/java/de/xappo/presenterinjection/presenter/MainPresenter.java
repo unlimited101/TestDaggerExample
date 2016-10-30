@@ -4,6 +4,7 @@ import android.support.annotation.NonNull;
 
 import javax.inject.Inject;
 
+import de.xappo.presenterinjection.DiceThrower;
 import de.xappo.presenterinjection.di.PerFragment;
 import de.xappo.presenterinjection.interactor.MainInteractor;
 import de.xappo.presenterinjection.model.Person;
@@ -17,6 +18,8 @@ import de.xappo.presenterinjection.view.MainView;
 public class MainPresenter implements MvpPresenter<MainView> {
     private MainView mainView;
     private MainInteractor mainInteractor;
+    @Inject
+    DiceThrower diceThrower;
 
 
     @Inject
@@ -27,6 +30,11 @@ public class MainPresenter implements MvpPresenter<MainView> {
     public void onClick(String name) {
         Person person = mainInteractor.createPerson(name);
         mainView.updatePerson(person);
+
+        diceThrower.throwDices(100, 6);
+
+        mainView.updateDiceResult(diceThrower.getDices().size(), diceThrower.getResult());
+
     }
 
     @Override

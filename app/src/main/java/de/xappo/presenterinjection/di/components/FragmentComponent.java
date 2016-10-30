@@ -17,6 +17,4 @@ public interface FragmentComponent {
     void inject(MainFragment mainFragment);
 
     void inject(MainActivity mainActivity);
-
-
 }

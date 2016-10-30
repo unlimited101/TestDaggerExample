@@ -23,10 +23,19 @@
 
         />
     <TextView
-        android:id="@+id/textview"
+        android:id="@+id/textview_greeting"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Hello World!"/>
+    <TextView
+        android:id="@+id/textview_dice_result"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/dices_result_text"/>
+
+
+
+
 
 
 

@@ -132,8 +132,14 @@ public class MainFragment extends BaseFragment implements MainView {
 
     @Override
     public void updatePerson(final Person person) {
-        TextView textView = (TextView) view.findViewById(R.id.textview);
+        TextView textView = (TextView) view.findViewById(R.id.textview_greeting);
         textView.setText("Hello " + person.getName());
+    }
+
+    @Override
+    public void updateDiceResult(final int numberOfThrows, final int result) {
+        TextView textView = (TextView) view.findViewById(R.id.textview_dice_result);
+        textView.setText(getResources().getString(R.string.dices_result_text, numberOfThrows, result));
     }
 
     @Override
