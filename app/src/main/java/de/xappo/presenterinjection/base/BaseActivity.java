@@ -1,14 +1,13 @@
 package de.xappo.presenterinjection.base;
 
 
-
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 
-import de.xappo.presenterinjection.base.AndroidApplication;
+import de.xappo.presenterinjection.R;
 import de.xappo.presenterinjection.di.components.ApplicationComponent;
 import de.xappo.presenterinjection.di.modules.ActivityModule;
 
@@ -30,7 +29,7 @@ public abstract class BaseActivity extends AppCompatActivity{
         return ((AndroidApplication) getApplication()).getApplicationComponent();
     }
 
-    protected ActivityModule getActivityModule() {
+    public ActivityModule getActivityModule() {
         return new ActivityModule(this);
     }
 
@@ -44,6 +43,10 @@ public abstract class BaseActivity extends AppCompatActivity{
         FragmentTransaction fragmentTransaction = this.getSupportFragmentManager().beginTransaction();
         fragmentTransaction.add(containerViewId, fragment);
         fragmentTransaction.commit();
+    }
+
+    public Fragment getCurrentFragment() {
+        return getSupportFragmentManager().findFragmentById(R.id.fragmentContainer);
     }
 
 

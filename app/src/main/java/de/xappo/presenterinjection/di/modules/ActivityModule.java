@@ -4,7 +4,6 @@ import android.app.Activity;
 
 import dagger.Module;
 import dagger.Provides;
-import de.xappo.presenterinjection.interactor.MainInteractor;
 import de.xappo.presenterinjection.di.PerActivity;
 
 /**
@@ -25,11 +24,6 @@ public class ActivityModule {
     @PerActivity
     Activity activity() {
         return this.activity;
-    }
-
-    @Provides @PerActivity
-    MainInteractor provideMainInteractor () {
-        return new MainInteractor();
     }
 
 }

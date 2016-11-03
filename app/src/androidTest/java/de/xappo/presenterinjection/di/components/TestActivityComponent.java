@@ -1,7 +1,5 @@
 package de.xappo.presenterinjection.di.components;
 
-import android.app.Activity;
-
 import dagger.Component;
 import de.xappo.presenterinjection.di.PerActivity;
 import de.xappo.presenterinjection.di.modules.ActivityModule;
@@ -11,7 +9,7 @@ import de.xappo.presenterinjection.di.modules.ActivityModule;
  */
 
 @PerActivity
-@Component(dependencies = ApplicationComponent.class, modules = ActivityModule.class)
-public interface ActivityComponent {
+@Component(dependencies = TestApplicationComponent.class, modules = ActivityModule.class)
+public interface TestActivityComponent {
 
 }

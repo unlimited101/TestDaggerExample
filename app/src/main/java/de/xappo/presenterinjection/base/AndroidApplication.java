@@ -13,7 +13,8 @@ public class AndroidApplication extends Application {
 
     private ApplicationComponent applicationComponent;
 
-    @Override public void onCreate() {
+    @Override
+    public void onCreate() {
         super.onCreate();
         this.initializeInjector();
     }
@@ -24,9 +25,7 @@ public class AndroidApplication extends Application {
                 .build();
     }
 
-
     public ApplicationComponent getApplicationComponent() {
         return this.applicationComponent;
     }
-
 }
