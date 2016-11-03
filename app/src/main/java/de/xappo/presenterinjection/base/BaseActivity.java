@@ -29,7 +29,7 @@ public abstract class BaseActivity extends AppCompatActivity{
         return ((AndroidApplication) getApplication()).getApplicationComponent();
     }
 
-    protected ActivityModule getActivityModule() {
+    public ActivityModule getActivityModule() {
         return new ActivityModule(this);
     }
 

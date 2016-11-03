@@ -9,6 +9,9 @@ import org.junit.Rule;
 import org.junit.Test;
 
 import de.xappo.presenterinjection.R;
+import de.xappo.presenterinjection.base.AndroidApplication;
+import de.xappo.presenterinjection.di.HasComponent;
+import de.xappo.presenterinjection.di.components.TestApplicationComponent;
 import de.xappo.presenterinjection.di.components.TestFragmentComponent;
 
 import static android.support.test.espresso.Espresso.onView;
@@ -26,27 +29,18 @@ import static org.hamcrest.Matchers.containsString;
 /**
  * Created by knoppik on 03.11.16.
  */
-public class MainActivityTest{
+public class MainActivityTest implements HasComponent<TestFragmentComponent> {
 
     @Rule
-    public ActivityTestRule<MainActivity> mActivityRule = new ActivityTestRule(MainActivity.class);
+    public ActivityTestRule<MainActivity> mActivityRule = new ActivityTestRule(MainActivity.class, true, true);
 
     private MainActivity mActivity;
     private TestFragmentComponent mTestFragmentComponent;
-//
-//    private void initializeInjector() {
-//        mTestFragmentComponent = DaggerTestFragmentComponent.builder()
-//                .applicationComponent((TestApplicationComponent)((ArApplication) mActivity.getApplication()).getApplicationComponent())
-//                .activityModule(mActivity.getActivityModule())
-//                .fragmentModule(mActivity.getFragmentModule())
-//                .build();
-//    }
+
 
     @Before
     public void setUp() throws Exception {
         mActivity = mActivityRule.getActivity();
-//        initializeInjector();
-//        mActivity.setComponent(mTestFragmentComponent);
     }
 
     @Test
@@ -64,6 +58,8 @@ public class MainActivityTest{
     }
 
 
-
-
+    @Override
+    public TestFragmentComponent getComponent() {
+        return mTestFragmentComponent;
+    }
 }
