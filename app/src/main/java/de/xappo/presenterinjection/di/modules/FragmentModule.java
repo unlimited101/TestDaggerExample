@@ -4,9 +4,7 @@ import android.support.v4.app.Fragment;
 
 import dagger.Module;
 import dagger.Provides;
-import de.xappo.presenterinjection.DiceThrower;
 import de.xappo.presenterinjection.di.PerFragment;
-import de.xappo.presenterinjection.interactor.MainInteractor;
 
 /**
  * Created by knoppik on 28.10.16.
@@ -28,9 +26,4 @@ public class FragmentModule {
         return this.fragment;
     }
 
-
-    @Provides @PerFragment
-    DiceThrower provideDiceThrower() {
-        return new DiceThrower();
-    }
 }
