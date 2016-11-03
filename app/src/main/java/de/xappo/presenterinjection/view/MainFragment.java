@@ -93,11 +93,15 @@ public class MainFragment extends BaseFragment implements MainView {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
-                mainPresenter.onClick(editText.getText().toString());
+                MainFragment.this.onClick(editText.getText().toString());
             }
         });
 
         return view;
+    }
+
+    public void onClick(final String s) {
+        mainPresenter.onClick(s);
     }
 
     @Override

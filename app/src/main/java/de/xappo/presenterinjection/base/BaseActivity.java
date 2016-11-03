@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 
+import de.xappo.presenterinjection.R;
 import de.xappo.presenterinjection.di.components.ApplicationComponent;
 import de.xappo.presenterinjection.di.modules.ActivityModule;
 
@@ -42,6 +43,10 @@ public abstract class BaseActivity extends AppCompatActivity{
         FragmentTransaction fragmentTransaction = this.getSupportFragmentManager().beginTransaction();
         fragmentTransaction.add(containerViewId, fragment);
         fragmentTransaction.commit();
+    }
+
+    public Fragment getCurrentFragment() {
+        return getSupportFragmentManager().findFragmentById(R.id.fragmentContainer);
     }
 
 

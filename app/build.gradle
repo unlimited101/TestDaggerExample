@@ -36,7 +36,13 @@ dependencies {
     compile 'com.google.dagger:dagger:2.7'
     compile 'com.android.support:support-v4:24.2.1'
     testCompile 'junit:junit:4.12'
+
     testCompile 'org.mockito:mockito-core:1.+'
+    androidTestCompile 'org.mockito:mockito-core:1.+'
+    androidTestCompile 'junit:junit:4.12'
+    androidTestCompile 'com.android.support.test:runner:0.5'
+    androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2'
+    androidTestCompile 'com.android.support:support-v4:24.2.1'
     annotationProcessor 'com.google.dagger:dagger-compiler:2.7'
     provided 'javax.annotation:jsr250-api:1.0'
 }

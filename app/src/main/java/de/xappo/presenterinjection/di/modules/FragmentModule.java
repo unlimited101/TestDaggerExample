@@ -28,10 +28,6 @@ public class FragmentModule {
         return this.fragment;
     }
 
-    @Provides @PerFragment
-    MainInteractor provideMainInteractor () {
-        return new MainInteractor();
-    }
 
     @Provides @PerFragment
     DiceThrower provideDiceThrower() {
