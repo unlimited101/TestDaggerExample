@@ -2,6 +2,7 @@ package de.xappo.presenterinjection.presenter;
 
 import android.support.annotation.NonNull;
 
+import android.util.Log;
 import javax.inject.Inject;
 
 import de.xappo.presenterinjection.di.PerFragment;
@@ -15,6 +16,7 @@ import de.xappo.presenterinjection.view.MainView;
 
 @PerFragment
 public class MainPresenter implements MvpPresenter<MainView> {
+    private static final String TAG = "MainPresenter";
     private MainView mainView;
     private MainInteractor mainInteractor;
 
@@ -25,6 +27,7 @@ public class MainPresenter implements MvpPresenter<MainView> {
     }
 
     public void onClick(String name) {
+        Log.i(TAG, "injectDagger mainInteractor used: " + mainInteractor.getClass().getName());
         Person person = mainInteractor.createPerson(name);
         mainView.updatePerson(person);
     }

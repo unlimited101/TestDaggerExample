@@ -22,6 +22,8 @@ public class AndroidApplication extends Application {
     }
 
     private void initializeInjector() {
+        Log.i(TAG, "injectDagger initializeInjector()");
+
         applicationComponent = DaggerApplicationComponent.builder()
                 .applicationModule(new ApplicationModule(this))
                 .build();
@@ -32,7 +34,7 @@ public class AndroidApplication extends Application {
     }
 
     public void setApplicationComponent(ApplicationComponent applicationComponent) {
-        Log.w(TAG, "Only call this method to swap test doubles");
+        Log.w(TAG, "injectDagger Only call this method to swap test doubles");
         this.applicationComponent = applicationComponent;
     }
 }

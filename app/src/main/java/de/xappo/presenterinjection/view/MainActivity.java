@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
 
+import android.util.Log;
 import de.xappo.presenterinjection.R;
 import de.xappo.presenterinjection.base.BaseActivity;
 import de.xappo.presenterinjection.di.HasComponent;
@@ -20,6 +21,7 @@ public class MainActivity extends BaseActivity implements MainFragment.OnFragmen
         HasComponent<FragmentComponent> {
 
 
+    private static final String TAG = "MainActivity";
     private FragmentComponent fragmentComponent;
     private Fragment currentFragment;
 
@@ -48,6 +50,9 @@ public class MainActivity extends BaseActivity implements MainFragment.OnFragmen
 
     @Override
     protected void onActivitySetup() {
+
+        Log.i(TAG, "injectDagger initializeInjector()");
+
         initializeInjector();
         fragmentComponent.inject(this);
 
@@ -55,6 +60,8 @@ public class MainActivity extends BaseActivity implements MainFragment.OnFragmen
 
     @Override
     public void setFragmentComponent(final FragmentComponent fragmentComponent) {
+        Log.i(TAG, "injectDagger setFragmentComponent()");
+
         super.setFragmentComponent(fragmentComponent);
         this.fragmentComponent = fragmentComponent;
     }
