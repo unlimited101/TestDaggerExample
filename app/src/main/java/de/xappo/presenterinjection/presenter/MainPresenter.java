@@ -23,6 +23,8 @@ public class MainPresenter implements MvpPresenter<MainView> {
 
     @Inject
     public MainPresenter(MainInteractor mainInteractor) {
+        Log.i(TAG, "injectDagger constrcutor");
+
         this.mainInteractor = mainInteractor;
     }
 

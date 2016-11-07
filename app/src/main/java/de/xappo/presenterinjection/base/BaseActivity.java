@@ -24,10 +24,7 @@ public abstract class BaseActivity extends AppCompatActivity{
     protected void onCreate(@Nullable final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getApplicationComponent().inject(this);
-        onActivitySetup();
     }
-
-    protected abstract void onActivitySetup();
 
     protected ApplicationComponent getApplicationComponent() {
         return ((AndroidApplication) getApplication()).getApplicationComponent();

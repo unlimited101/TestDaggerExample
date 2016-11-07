@@ -2,6 +2,7 @@ package de.xappo.presenterinjection.view;
 
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 
 
@@ -31,31 +32,26 @@ public class MainActivity extends BaseActivity implements MainFragment.OnFragmen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        initializeInjector();
+        fragmentComponent.inject(MainActivity.this);
+
         if (savedInstanceState == null) {
             currentFragment = new MainFragment();
             addFragment(R.id.fragmentContainer, currentFragment);
         }
 
+
     }
 
 
     private void initializeInjector() {
+        Log.i(TAG, "injectDagger initializeInjector()");
         fragmentComponent = DaggerFragmentComponent.builder()
                 .applicationComponent(getApplicationComponent())
                 .activityModule(getActivityModule())
                 .fragmentModule(getFragmentModule())
                 .interactorModule(new InteractorModule())
                 .build();
-    }
-
-    @Override
-    protected void onActivitySetup() {
-
-        Log.i(TAG, "injectDagger initializeInjector()");
-
-        initializeInjector();
-        fragmentComponent.inject(this);
-
     }
 
     @Override

@@ -68,11 +68,11 @@ public class MainActivityTest{
         initializeInjector();
     }
 
-    @Test
-    public void testMainFragmentLoaded() throws Exception {
-        mActivity = mActivityRule.getActivity();
-        assertTrue(mActivity.getCurrentFragment() instanceof MainFragment);
-    }
+//    @Test
+//    public void testMainFragmentLoaded() throws Exception {
+//        mActivity = mActivityRule.getActivity();
+//        assertTrue(mActivity.getCurrentFragment() instanceof MainFragment);
+//    }
 
     @Test
     public void testOnClick() throws Exception {

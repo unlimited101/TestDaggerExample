@@ -1,6 +1,7 @@
 package de.xappo.presenterinjection.base;
 
 import android.app.Application;
+import android.support.annotation.VisibleForTesting;
 import android.util.Log;
 
 import de.xappo.presenterinjection.di.components.ApplicationComponent;
@@ -33,6 +34,7 @@ public class AndroidApplication extends Application {
         return this.applicationComponent;
     }
 
+    @VisibleForTesting
     public void setApplicationComponent(ApplicationComponent applicationComponent) {
         Log.w(TAG, "injectDagger Only call this method to swap test doubles");
         this.applicationComponent = applicationComponent;

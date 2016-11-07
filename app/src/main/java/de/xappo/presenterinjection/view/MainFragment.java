@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +24,7 @@ import de.xappo.presenterinjection.presenter.MainPresenter;
 
 public class MainFragment extends BaseFragment implements MainView {
 
+    private static final String TAG = "MainFragment";
     @Inject
     MainPresenter mainPresenter;
     private View view;
@@ -33,6 +35,7 @@ public class MainFragment extends BaseFragment implements MainView {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        Log.i(TAG, "injectDagger onCreate()");
         super.onCreate(savedInstanceState);
         getComponent(FragmentComponent.class).inject(this);
     }
