@@ -5,16 +5,16 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 import javax.inject.Inject;
 
-import de.xappo.presenterinjection.di.PerFragment;
 import de.xappo.presenterinjection.interactor.MainInteractor;
 import de.xappo.presenterinjection.model.Person;
 import de.xappo.presenterinjection.view.MainView;
+import javax.inject.Singleton;
 
 /**
  * Created by knoppik on 27.10.16.
  */
 
-@PerFragment
+@Singleton
 public class MainPresenter implements MvpPresenter<MainView> {
     private static final String TAG = "MainPresenter";
     private MainView mainView;

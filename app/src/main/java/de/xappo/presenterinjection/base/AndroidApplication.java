@@ -38,5 +38,6 @@ public class AndroidApplication extends Application {
     public void setApplicationComponent(ApplicationComponent applicationComponent) {
         Log.w(TAG, "injectDagger Only call this method to swap test doubles");
         this.applicationComponent = applicationComponent;
+
     }
 }

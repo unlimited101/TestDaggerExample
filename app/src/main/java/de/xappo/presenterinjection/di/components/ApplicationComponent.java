@@ -1,5 +1,6 @@
 package de.xappo.presenterinjection.di.components;
 
+import de.xappo.presenterinjection.view.MainFragment;
 import javax.inject.Singleton;
 
 import dagger.Component;
@@ -12,5 +13,5 @@ import de.xappo.presenterinjection.base.BaseActivity;
 @Singleton
 @Component(modules = ApplicationModule.class)
 public interface ApplicationComponent {
-    void inject(BaseActivity baseActivity);
+    void inject(MainFragment mainFragment);
 }

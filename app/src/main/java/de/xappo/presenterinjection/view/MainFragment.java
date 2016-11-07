@@ -1,10 +1,8 @@
 package de.xappo.presenterinjection.view;
 
-import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,11 +11,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import de.xappo.presenterinjection.base.AndroidApplication;
 import javax.inject.Inject;
 
 import de.xappo.presenterinjection.R;
 import de.xappo.presenterinjection.base.BaseFragment;
-import de.xappo.presenterinjection.di.components.FragmentComponent;
 import de.xappo.presenterinjection.model.Person;
 import de.xappo.presenterinjection.presenter.MainPresenter;
 
@@ -37,7 +35,7 @@ public class MainFragment extends BaseFragment implements MainView {
     public void onCreate(Bundle savedInstanceState) {
         Log.i(TAG, "injectDagger onCreate()");
         super.onCreate(savedInstanceState);
-        getComponent(FragmentComponent.class).inject(this);
+        ((AndroidApplication)((MainActivity) getActivity()).getApplication()).getApplicationComponent().inject(this);
     }
 
     @Override

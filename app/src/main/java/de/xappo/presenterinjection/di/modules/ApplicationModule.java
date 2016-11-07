@@ -1,12 +1,11 @@
 package de.xappo.presenterinjection.di.modules;
 
-import android.content.Context;
-
-import javax.inject.Singleton;
+import de.xappo.presenterinjection.interactor.MainInteractor;
 
 import dagger.Module;
 import dagger.Provides;
 import de.xappo.presenterinjection.base.AndroidApplication;
+import javax.inject.Singleton;
 
 /**
  * Created by knoppik on 27.10.16.
@@ -21,9 +20,8 @@ public class ApplicationModule {
 
     @Provides
     @Singleton
-    Context provideApplicationContext() {
-        return this.application;
+    MainInteractor provideMainInteractor () {
+        return new MainInteractor();
     }
-
 
 }

@@ -2,10 +2,11 @@ package de.xappo.presenterinjection.di.modules;
 
 import dagger.Module;
 import dagger.Provides;
-import de.xappo.presenterinjection.di.PerFragment;
+import de.xappo.presenterinjection.base.AndroidApplication;
 import de.xappo.presenterinjection.fake.FakeMainInteractor;
 import de.xappo.presenterinjection.interactor.MainInteractor;
 
+import javax.inject.Singleton;
 import static org.mockito.Mockito.mock;
 
 /**
@@ -13,10 +14,15 @@ import static org.mockito.Mockito.mock;
  */
 
 @Module
-public class TestInteractorModule {
+public class TestApplicationModule {
+    private final AndroidApplication application;
+
+    public TestApplicationModule(AndroidApplication application) {
+        this.application = application;
+    }
 
     @Provides
-    @PerFragment
+    @Singleton
     MainInteractor provideMainInteractor () {
         return new FakeMainInteractor();
     }
