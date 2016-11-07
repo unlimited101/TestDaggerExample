@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
 import de.xappo.presenterinjection.R;
 import de.xappo.presenterinjection.di.components.ApplicationComponent;
@@ -17,6 +18,7 @@ import de.xappo.presenterinjection.di.modules.ActivityModule;
  */
 public abstract class BaseActivity extends AppCompatActivity{
 
+    private static final String TAG = "BaseActivity";
 
     @Override
     protected void onCreate(@Nullable final Bundle savedInstanceState) {
@@ -52,6 +54,8 @@ public abstract class BaseActivity extends AppCompatActivity{
     }
 
 
-    public abstract void setFragmentComponent(FragmentComponent fragmentComponent);
+    public void setFragmentComponent(FragmentComponent fragmentComponent) {
+        Log.w(TAG, "Only call this method to swap test doubles");
+    }
 
 }

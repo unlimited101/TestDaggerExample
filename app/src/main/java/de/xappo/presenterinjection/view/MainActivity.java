@@ -55,6 +55,7 @@ public class MainActivity extends BaseActivity implements MainFragment.OnFragmen
 
     @Override
     public void setFragmentComponent(final FragmentComponent fragmentComponent) {
+        super.setFragmentComponent(fragmentComponent);
         this.fragmentComponent = fragmentComponent;
     }
 
