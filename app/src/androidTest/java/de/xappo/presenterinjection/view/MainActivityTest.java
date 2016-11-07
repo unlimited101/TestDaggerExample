@@ -9,7 +9,6 @@ import org.junit.Test;
 
 import de.xappo.presenterinjection.R;
 import de.xappo.presenterinjection.base.AndroidApplication;
-import de.xappo.presenterinjection.di.HasComponent;
 import de.xappo.presenterinjection.di.components.DaggerTestApplicationComponent;
 import de.xappo.presenterinjection.di.components.DaggerTestFragmentComponent;
 import de.xappo.presenterinjection.di.components.TestApplicationComponent;
@@ -30,7 +29,7 @@ import static org.hamcrest.Matchers.containsString;
 /**
  * Created by knoppik on 03.11.16.
  */
-public class MainActivityTest implements HasComponent<TestFragmentComponent> {
+public class MainActivityTest{
 
     @Rule
     public ActivityTestRule<MainActivity> mActivityRule = new ActivityTestRule(MainActivity.class, true, true);
@@ -56,6 +55,7 @@ public class MainActivityTest implements HasComponent<TestFragmentComponent> {
 
         mTestApplicationComponent.inject(this);
         mTestFragmentComponent.inject(this);
+
     }
 
     public AndroidApplication getApp() {
@@ -81,9 +81,4 @@ public class MainActivityTest implements HasComponent<TestFragmentComponent> {
         onView(withId(R.id.textview_greeting)).check(matches(withText(containsString("Hello John"))));
     }
 
-
-    @Override
-    public TestFragmentComponent getComponent() {
-        return mTestFragmentComponent;
-    }
 }

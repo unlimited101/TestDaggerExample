@@ -38,7 +38,7 @@ public class MainActivity extends BaseActivity implements MainFragment.OnFragmen
 
 
     private void initializeInjector() {
-        this.fragmentComponent = DaggerFragmentComponent.builder()
+        fragmentComponent = DaggerFragmentComponent.builder()
                 .applicationComponent(getApplicationComponent())
                 .activityModule(getActivityModule())
                 .fragmentModule(getFragmentModule())
@@ -48,7 +48,7 @@ public class MainActivity extends BaseActivity implements MainFragment.OnFragmen
 
     @Override
     protected void onActivitySetup() {
-        this.initializeInjector();
+        initializeInjector();
         fragmentComponent.inject(this);
 
     }

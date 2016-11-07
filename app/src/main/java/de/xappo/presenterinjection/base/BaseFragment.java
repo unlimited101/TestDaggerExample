@@ -16,4 +16,5 @@ public class BaseFragment extends Fragment {
     protected <C> C getComponent(Class<C> componentType) {
         return componentType.cast(((HasComponent<C>) getActivity()).getComponent());
     }
+
 }

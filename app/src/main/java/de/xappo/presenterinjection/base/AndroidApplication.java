@@ -18,11 +18,11 @@ public class AndroidApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        this.initializeInjector();
+        initializeInjector();
     }
 
     private void initializeInjector() {
-        this.applicationComponent = DaggerApplicationComponent.builder()
+        applicationComponent = DaggerApplicationComponent.builder()
                 .applicationModule(new ApplicationModule(this))
                 .build();
     }

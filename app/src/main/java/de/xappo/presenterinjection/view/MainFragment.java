@@ -34,7 +34,7 @@ public class MainFragment extends BaseFragment implements MainView {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.getComponent(FragmentComponent.class).inject(this);
+        getComponent(FragmentComponent.class).inject(this);
     }
 
     @Override

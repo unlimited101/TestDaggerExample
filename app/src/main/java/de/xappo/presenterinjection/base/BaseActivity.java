@@ -23,7 +23,7 @@ public abstract class BaseActivity extends AppCompatActivity{
     @Override
     protected void onCreate(@Nullable final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.getApplicationComponent().inject(this);
+        getApplicationComponent().inject(this);
         onActivitySetup();
     }
 
@@ -44,7 +44,7 @@ public abstract class BaseActivity extends AppCompatActivity{
      * @param fragment The fragment to be added.
      */
     protected void addFragment(int containerViewId, Fragment fragment) {
-        FragmentTransaction fragmentTransaction = this.getSupportFragmentManager().beginTransaction();
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.add(containerViewId, fragment);
         fragmentTransaction.commit();
     }
