@@ -13,6 +13,7 @@ import de.xappo.presenterinjection.di.HasComponent;
 import de.xappo.presenterinjection.di.components.DaggerFragmentComponent;
 import de.xappo.presenterinjection.di.components.FragmentComponent;
 import de.xappo.presenterinjection.di.modules.FragmentModule;
+import de.xappo.presenterinjection.di.modules.InteractorModule;
 
 
 public class MainActivity extends BaseActivity implements MainFragment.OnFragmentInteractionListener,
@@ -41,6 +42,7 @@ public class MainActivity extends BaseActivity implements MainFragment.OnFragmen
                 .applicationComponent(getApplicationComponent())
                 .activityModule(getActivityModule())
                 .fragmentModule(getFragmentModule())
+                .interactorModule(new InteractorModule())
                 .build();
     }
 
@@ -49,6 +51,11 @@ public class MainActivity extends BaseActivity implements MainFragment.OnFragmen
         this.initializeInjector();
         fragmentComponent.inject(this);
 
+    }
+
+    @Override
+    public void setFragmentComponent(final FragmentComponent fragmentComponent) {
+        this.fragmentComponent = fragmentComponent;
     }
 
     @Override

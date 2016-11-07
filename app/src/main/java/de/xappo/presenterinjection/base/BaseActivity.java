@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import de.xappo.presenterinjection.R;
 import de.xappo.presenterinjection.di.components.ApplicationComponent;
+import de.xappo.presenterinjection.di.components.FragmentComponent;
 import de.xappo.presenterinjection.di.modules.ActivityModule;
 
 /**
@@ -25,6 +26,7 @@ public abstract class BaseActivity extends AppCompatActivity{
     }
 
     protected abstract void onActivitySetup();
+
     protected ApplicationComponent getApplicationComponent() {
         return ((AndroidApplication) getApplication()).getApplicationComponent();
     }
@@ -49,5 +51,7 @@ public abstract class BaseActivity extends AppCompatActivity{
         return getSupportFragmentManager().findFragmentById(R.id.fragmentContainer);
     }
 
+
+    public abstract void setFragmentComponent(FragmentComponent fragmentComponent);
 
 }

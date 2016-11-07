@@ -10,6 +10,6 @@ import de.xappo.presenterinjection.di.modules.ActivityModule;
 
 @PerActivity
 @Component(dependencies = TestApplicationComponent.class, modules = ActivityModule.class)
-public interface TestActivityComponent {
+public interface TestActivityComponent extends ActivityComponent {
 
 }

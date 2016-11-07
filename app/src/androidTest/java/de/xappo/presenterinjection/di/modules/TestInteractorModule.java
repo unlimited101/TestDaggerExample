@@ -17,7 +17,7 @@ public class TestInteractorModule {
 
     @Provides
     @PerFragment
-    FakeMainInteractor provideMainInteractor () {
+    MainInteractor provideMainInteractor () {
         return new FakeMainInteractor();
     }
 }

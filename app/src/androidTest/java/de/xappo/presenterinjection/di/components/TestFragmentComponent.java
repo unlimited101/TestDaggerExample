@@ -6,6 +6,7 @@ import de.xappo.presenterinjection.di.modules.ActivityModule;
 import de.xappo.presenterinjection.di.modules.FragmentModule;
 import de.xappo.presenterinjection.di.modules.TestInteractorModule;
 import de.xappo.presenterinjection.view.MainActivity;
+import de.xappo.presenterinjection.view.MainActivityTest;
 import de.xappo.presenterinjection.view.MainFragment;
 
 /**
@@ -14,8 +15,7 @@ import de.xappo.presenterinjection.view.MainFragment;
 
 @PerFragment
 @Component(dependencies = TestApplicationComponent.class, modules = {ActivityModule.class, FragmentModule.class, TestInteractorModule.class})
-public interface TestFragmentComponent {
-    void inject(MainFragment mainFragment);
+public interface TestFragmentComponent extends FragmentComponent {
+    void inject(MainActivityTest mainActivityTest);
 
-    void inject(MainActivity mainActivity);
 }
