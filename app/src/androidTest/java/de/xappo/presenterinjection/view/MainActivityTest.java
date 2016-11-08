@@ -61,7 +61,7 @@ public class MainActivityTest{
     public AndroidApplication getApp() {
         return (AndroidApplication) InstrumentationRegistry.getInstrumentation().getTargetContext().getApplicationContext();
     }
-    //TODO: That approach works
+    // TODO: That approach works
 
     @Before
     public void setUp() throws Exception {
@@ -71,7 +71,7 @@ public class MainActivityTest{
         mActivity = mActivityRule.getActivity();
     }
 
-    //TODO: That approach does not works because mActivity.setActivityComponent() is called after MainInteractor has already been injected!
+    // TODO: That approach does not works because mActivity.setActivityComponent() is called after MainInteractor has already been injected!
 //    @Before
 //    public void setUp() throws Exception {
 //        mActivityRule.launchActivity(null);

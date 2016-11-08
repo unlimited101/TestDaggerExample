@@ -15,6 +15,6 @@ import de.xappo.presenterinjection.view.MainFragment;
 @Component(modules = ActivityModule.class)
 public interface ActivityComponent {
     void inject(MainActivity mainActivity);
-    //TODO: Comment this out for making the new approach working
+    // TODO: Comment this out for making the new approach working
 //    void inject(MainFragment mainFragment);
 }
