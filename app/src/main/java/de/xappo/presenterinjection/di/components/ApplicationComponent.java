@@ -12,5 +12,5 @@ import de.xappo.presenterinjection.view.MainFragment;
 @Singleton
 @Component(modules = ApplicationModule.class)
 public interface ApplicationComponent {
-    void inject(MainFragment mainFragment);
+//    void inject(MainFragment mainFragment);
 }

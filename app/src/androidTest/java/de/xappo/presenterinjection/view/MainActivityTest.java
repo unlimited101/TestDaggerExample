@@ -10,8 +10,11 @@ import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import android.support.test.rule.ActivityTestRule;
 import de.xappo.presenterinjection.R;
 import de.xappo.presenterinjection.base.AndroidApplication;
+import de.xappo.presenterinjection.di.components.DaggerTestActivityComponent;
 import de.xappo.presenterinjection.di.components.DaggerTestApplicationComponent;
+import de.xappo.presenterinjection.di.components.TestActivityComponent;
 import de.xappo.presenterinjection.di.components.TestApplicationComponent;
+import de.xappo.presenterinjection.di.modules.TestActivityModule;
 import de.xappo.presenterinjection.di.modules.TestApplicationModule;
 import static org.hamcrest.Matchers.containsString;
 import org.junit.Before;
@@ -28,15 +31,16 @@ public class MainActivityTest{
     public ActivityTestRule<MainActivity> mActivityRule = new ActivityTestRule(MainActivity.class, true, false);
 
     private MainActivity mActivity;
-    private TestApplicationComponent mTestApplicationComponent;
+    private TestActivityComponent mTestActivityComponent;
 
     private void initializeInjector() {
-        mTestApplicationComponent = DaggerTestApplicationComponent.builder()
-                .testApplicationModule(new TestApplicationModule(getApp()))
+        mTestActivityComponent = DaggerTestActivityComponent.builder()
+                .testActivityModule(new TestActivityModule())
                 .build();
 
-        getApp().setApplicationComponent(mTestApplicationComponent);
-        mTestApplicationComponent.inject(this);
+        mActivity.setActivityComponent(mTestActivityComponent);
+        mTestActivityComponent.inject(this);
+//        mTestApplicationComponent.inject(this);
     }
 
     public AndroidApplication getApp() {
@@ -45,9 +49,10 @@ public class MainActivityTest{
 
     @Before
     public void setUp() throws Exception {
-        initializeInjector();
         mActivityRule.launchActivity(null);
         mActivity = mActivityRule.getActivity();
+        initializeInjector();
+
 
     }
 
