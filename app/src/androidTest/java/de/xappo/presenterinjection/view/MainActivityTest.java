@@ -1,25 +1,25 @@
 package de.xappo.presenterinjection.view;
 
 import android.support.test.InstrumentationRegistry;
+import android.support.test.rule.ActivityTestRule;
+
+import org.junit.Before;
+import org.junit.Rule;
+import org.junit.Test;
+
+import de.xappo.presenterinjection.R;
+import de.xappo.presenterinjection.base.AndroidApplication;
+import de.xappo.presenterinjection.di.components.DaggerTestActivityComponent;
+import de.xappo.presenterinjection.di.components.TestActivityComponent;
+import de.xappo.presenterinjection.di.modules.TestActivityModule;
+
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
-import android.support.test.rule.ActivityTestRule;
-import de.xappo.presenterinjection.R;
-import de.xappo.presenterinjection.base.AndroidApplication;
-import de.xappo.presenterinjection.di.components.DaggerTestActivityComponent;
-import de.xappo.presenterinjection.di.components.DaggerTestApplicationComponent;
-import de.xappo.presenterinjection.di.components.TestActivityComponent;
-import de.xappo.presenterinjection.di.components.TestApplicationComponent;
-import de.xappo.presenterinjection.di.modules.TestActivityModule;
-import de.xappo.presenterinjection.di.modules.TestApplicationModule;
 import static org.hamcrest.Matchers.containsString;
-import org.junit.Before;
-import org.junit.Rule;
-import org.junit.Test;
 
 
 /**
@@ -33,6 +33,19 @@ public class MainActivityTest{
     private MainActivity mActivity;
     private TestActivityComponent mTestActivityComponent;
 
+    // TODO: That approach worked before!
+//    private TestApplicationComponent mTestApplicationComponent;
+//
+//    private void initializeInjector() {
+//        mTestApplicationComponent = DaggerTestApplicationComponent.builder()
+//                .testApplicationModule(new TestApplicationModule(getApp()))
+//                .build();
+//
+//        getApp().setApplicationComponent(mTestApplicationComponent);
+//        mTestApplicationComponent.inject(this);
+//    }
+
+    // TODO: This approach does NOT work because mActivity.setActivityComponent() is called after MainInteractor has already been injected!
     private void initializeInjector() {
         mTestActivityComponent = DaggerTestActivityComponent.builder()
                 .testActivityModule(new TestActivityModule())
@@ -40,7 +53,6 @@ public class MainActivityTest{
 
         mActivity.setActivityComponent(mTestActivityComponent);
         mTestActivityComponent.inject(this);
-//        mTestApplicationComponent.inject(this);
     }
 
     public AndroidApplication getApp() {

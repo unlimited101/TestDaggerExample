@@ -1,7 +1,5 @@
 package de.xappo.presenterinjection.di.modules;
 
-import javax.inject.Singleton;
-
 import dagger.Module;
 import dagger.Provides;
 import de.xappo.presenterinjection.di.scopes.PerActivity;
