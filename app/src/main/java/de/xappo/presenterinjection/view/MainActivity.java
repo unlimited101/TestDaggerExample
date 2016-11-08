@@ -48,7 +48,6 @@ public class MainActivity extends BaseActivity implements MainFragment.OnFragmen
         Log.i(TAG, "injectDagger initializeInjector()");
 
         activityComponent = DaggerActivityComponent.builder()
-//                .applicationComponent(((AndroidApplication) getApplication()).getApplicationComponent())
                 .activityModule(new ActivityModule())
                 .build();
         activityComponent.inject(this);
