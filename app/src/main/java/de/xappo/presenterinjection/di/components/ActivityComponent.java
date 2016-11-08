@@ -10,7 +10,7 @@ import de.xappo.presenterinjection.view.MainFragment;
 /**
  * Created by knoppik on 08.11.16.
  */
-@Singleton
+@PerActivity
 @Component(modules = ActivityModule.class)
 public interface ActivityComponent {
 //    void inject(MainFragment mainFragment);
