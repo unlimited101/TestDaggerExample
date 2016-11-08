@@ -6,15 +6,11 @@ import android.support.annotation.VisibleForTesting;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 
-import javax.inject.Inject;
-
 import de.xappo.presenterinjection.R;
-import de.xappo.presenterinjection.base.AndroidApplication;
 import de.xappo.presenterinjection.base.BaseActivity;
 import de.xappo.presenterinjection.di.components.ActivityComponent;
 import de.xappo.presenterinjection.di.components.DaggerActivityComponent;
 import de.xappo.presenterinjection.di.modules.ActivityModule;
-import de.xappo.presenterinjection.interactor.SomeInteractor;
 
 
 public class MainActivity extends BaseActivity implements MainFragment.OnFragmentInteractionListener {
@@ -23,8 +19,6 @@ public class MainActivity extends BaseActivity implements MainFragment.OnFragmen
     private static final String TAG = "MainActivity";
     private Fragment currentFragment;
     private ActivityComponent activityComponent;
-    @Inject
-    SomeInteractor someInteractor;
 
 
     @Override
@@ -39,8 +33,6 @@ public class MainActivity extends BaseActivity implements MainFragment.OnFragmen
             currentFragment = new MainFragment();
             addFragment(R.id.fragmentContainer, currentFragment);
         }
-
-        someInteractor.setName("new setted some interactor name");
 
     }
 
