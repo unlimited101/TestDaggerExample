@@ -31,7 +31,7 @@ public class AndroidApplication extends Application {
     }
 
     public ApplicationComponent getApplicationComponent() {
-        return this.applicationComponent;
+        return applicationComponent;
     }
 
     @VisibleForTesting

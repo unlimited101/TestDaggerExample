@@ -2,17 +2,15 @@ package de.xappo.presenterinjection.view;
 
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.VisibleForTesting;
 import android.support.v4.app.Fragment;
-
-
 import android.util.Log;
+
 import de.xappo.presenterinjection.R;
 import de.xappo.presenterinjection.base.BaseActivity;
 import de.xappo.presenterinjection.di.components.ActivityComponent;
 import de.xappo.presenterinjection.di.components.DaggerActivityComponent;
-import de.xappo.presenterinjection.di.components.DaggerApplicationComponent;
 import de.xappo.presenterinjection.di.modules.ActivityModule;
-import de.xappo.presenterinjection.di.modules.ApplicationModule;
 
 
 public class MainActivity extends BaseActivity implements MainFragment.OnFragmentInteractionListener {
@@ -47,9 +45,18 @@ public class MainActivity extends BaseActivity implements MainFragment.OnFragmen
                 .build();
     }
 
-
     @Override
     public void onFragmentInteraction(final Uri uri) {
 
+    }
+
+    ActivityComponent getActivityComponent() {
+        return activityComponent;
+    }
+
+    @VisibleForTesting
+    public void setActivityComponent(ActivityComponent activityComponent) {
+        Log.w(TAG, "injectDagger Only call this method to swap test doubles");
+        this.activityComponent = activityComponent;
     }
 }
