@@ -21,9 +21,5 @@ public class TestApplicationModule {
         this.application = application;
     }
 
-    @Provides
-    @Singleton
-    MainInteractor provideMainInteractor () {
-        return new FakeMainInteractor();
-    }
+git co
 }

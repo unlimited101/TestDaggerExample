@@ -1,11 +1,9 @@
 package de.xappo.presenterinjection.di.components;
 
-import de.xappo.presenterinjection.di.modules.TestApplicationModule;
 import javax.inject.Singleton;
 
 import dagger.Component;
-import de.xappo.presenterinjection.base.BaseActivity;
-import de.xappo.presenterinjection.di.modules.ApplicationModule;
+import de.xappo.presenterinjection.di.modules.TestApplicationModule;
 import de.xappo.presenterinjection.view.MainActivityTest;
 
 /**
