@@ -14,7 +14,8 @@ import de.xappo.presenterinjection.view.MainFragment;
 @PerActivity
 @Component(modules = ActivityModule.class)
 public interface ActivityComponent {
+    // TODO: Comment this out for switching back to the old approach
+    void inject(MainFragment mainFragment);
+    // TODO: Leave that for witching to the new approach
     void inject(MainActivity mainActivity);
-    // TODO: Comment this out for switching to the new approach
-//    void inject(MainFragment mainFragment);
 }

@@ -16,9 +16,9 @@ import de.xappo.presenterinjection.view.MainView;
  */
 
 // TODO: This worked before including the changes in MainActivityTest and ApplicationComponent
-@Singleton
+//@Singleton
 // TODO: This approach is NOT working, see MainActvityTest
-//@PerActivity
+@PerActivity
 public class MainPresenter implements MvpPresenter<MainView> {
     private static final String TAG = "MainPresenter";
     private MainView mainView;

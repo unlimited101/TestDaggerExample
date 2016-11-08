@@ -37,47 +37,47 @@ public class MainActivityTest{
     private TestActivityComponent mTestActivityComponent;
 
     // TODO: That approach works
-    private TestApplicationComponent mTestApplicationComponent;
-
-    private void initializeInjector() {
-        mTestApplicationComponent = DaggerTestApplicationComponent.builder()
-                .testApplicationModule(new TestApplicationModule(getApp()))
-                .build();
-
-        getApp().setApplicationComponent(mTestApplicationComponent);
-        mTestApplicationComponent.inject(this);
-    }
-
-    // TODO: This approach does NOT work because mActivity.setActivityComponent() is called after MainInteractor has already been injected!
+//    private TestApplicationComponent mTestApplicationComponent;
+//
 //    private void initializeInjector() {
-//        mTestActivityComponent = DaggerTestActivityComponent.builder()
-//                .testActivityModule(new TestActivityModule())
+//        mTestApplicationComponent = DaggerTestApplicationComponent.builder()
+//                .testApplicationModule(new TestApplicationModule(getApp()))
 //                .build();
 //
-//        mActivity.setActivityComponent(mTestActivityComponent);
-//        mTestActivityComponent.inject(this);
+//        getApp().setApplicationComponent(mTestApplicationComponent);
+//        mTestApplicationComponent.inject(this);
 //    }
+
+    // TODO: This approach does NOT work because mActivity.setActivityComponent() is called after MainInteractor has already been injected!
+    private void initializeInjector() {
+        mTestActivityComponent = DaggerTestActivityComponent.builder()
+                .testActivityModule(new TestActivityModule())
+                .build();
+
+        mActivity.setActivityComponent(mTestActivityComponent);
+        mTestActivityComponent.inject(this);
+    }
 
     public AndroidApplication getApp() {
         return (AndroidApplication) InstrumentationRegistry.getInstrumentation().getTargetContext().getApplicationContext();
     }
     // TODO: That approach works
 
-    @Before
-    public void setUp() throws Exception {
-
-        initializeInjector();
-        mActivityRule.launchActivity(null);
-        mActivity = mActivityRule.getActivity();
-    }
-
-    // TODO: That approach does not works because mActivity.setActivityComponent() is called after MainInteractor has already been injected!
 //    @Before
 //    public void setUp() throws Exception {
+//
+//        initializeInjector();
 //        mActivityRule.launchActivity(null);
 //        mActivity = mActivityRule.getActivity();
-//        initializeInjector();
 //    }
+
+    // TODO: That approach does not works because mActivity.setActivityComponent() is called after MainInteractor has already been injected!
+    @Before
+    public void setUp() throws Exception {
+        mActivityRule.launchActivity(null);
+        mActivity = mActivityRule.getActivity();
+        initializeInjector();
+    }
 
 
     @Test
