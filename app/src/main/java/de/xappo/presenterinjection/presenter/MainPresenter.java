@@ -15,6 +15,7 @@ import de.xappo.presenterinjection.view.MainView;
  * Created by knoppik on 27.10.16.
  */
 
+//@Singleton
 @PerActivity
 public class MainPresenter implements MvpPresenter<MainView> {
     private static final String TAG = "MainPresenter";
