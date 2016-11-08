@@ -36,7 +36,7 @@ public class MainActivityTest{
     private MainActivity mActivity;
     private TestActivityComponent mTestActivityComponent;
 
-    // TODO: That approach worked before!
+    // TODO: That approach works
     private TestApplicationComponent mTestApplicationComponent;
 
     private void initializeInjector() {
