@@ -1,14 +1,14 @@
 package de.xappo.presenterinjection.presenter;
 
 import android.support.annotation.NonNull;
-
 import android.util.Log;
+
 import javax.inject.Inject;
+import javax.inject.Singleton;
 
 import de.xappo.presenterinjection.interactor.MainInteractor;
 import de.xappo.presenterinjection.model.Person;
 import de.xappo.presenterinjection.view.MainView;
-import javax.inject.Singleton;
 
 /**
  * Created by knoppik on 27.10.16.

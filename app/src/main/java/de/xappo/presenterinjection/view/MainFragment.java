@@ -36,6 +36,7 @@ public class MainFragment extends BaseFragment implements MainView {
         Log.i(TAG, "injectDagger onCreate()");
         super.onCreate(savedInstanceState);
         ((AndroidApplication)((MainActivity) getActivity()).getApplication()).getApplicationComponent().inject(this);
+       // ((MainActivity) getActivity()).getActivityComponent().inject(this);
     }
 
     @Override
