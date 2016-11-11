@@ -1,5 +1,6 @@
 package de.xappo.presenterinjection.view;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.VisibleForTesting;
@@ -8,9 +9,13 @@ import android.util.Log;
 
 import de.xappo.presenterinjection.R;
 import de.xappo.presenterinjection.base.BaseActivity;
+import de.xappo.presenterinjection.base.UITestActivity;
 import de.xappo.presenterinjection.di.components.ActivityComponent;
 import de.xappo.presenterinjection.di.components.DaggerActivityComponent;
 import de.xappo.presenterinjection.di.modules.ActivityModule;
+import de.xappo.presenterinjection.di.utils.ComponentHolder;
+import de.xappo.presenterinjection.di.utils.Injector;
+import de.xappo.presenterinjection.di.utils.ScopedInjector;
 
 
 public class MainActivity extends BaseActivity implements MainFragment.OnFragmentInteractionListener {
@@ -18,16 +23,13 @@ public class MainActivity extends BaseActivity implements MainFragment.OnFragmen
 
     private static final String TAG = "MainActivity";
     private Fragment currentFragment;
-    private ActivityComponent activityComponent;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        initializeInjector();
-
 
         if (savedInstanceState == null) {
             currentFragment = new MainFragment();
@@ -36,27 +38,12 @@ public class MainActivity extends BaseActivity implements MainFragment.OnFragmen
 
     }
 
-    private void initializeInjector() {
-        Log.i(TAG, "injectDagger initializeInjector()");
-
-        activityComponent = DaggerActivityComponent.builder()
-                .activityModule(new ActivityModule())
-                .build();
-        activityComponent.inject(this);
-    }
 
     @Override
     public void onFragmentInteraction(final Uri uri) {
 
     }
 
-    ActivityComponent getActivityComponent() {
-        return activityComponent;
-    }
 
-    @VisibleForTesting
-    public void setActivityComponent(ActivityComponent activityComponent) {
-        Log.w(TAG, "injectDagger Only call this method to swap test doubles");
-        this.activityComponent = activityComponent;
-    }
+
 }

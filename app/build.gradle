@@ -9,7 +9,7 @@ android {
         targetSdkVersion 24
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "de.xappo.presenterinjection.base.AndroidApplicationJUnitRunner"
     }
     buildTypes {
         release {
@@ -43,9 +43,11 @@ dependencies {
     androidTestCompile 'org.mockito:mockito-core:1.+'
     androidTestCompile 'junit:junit:4.12'
     androidTestCompile 'com.android.support.test:runner:0.5'
+    androidTestCompile 'com.android.support.test:rules:0.5'
     androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2'
     androidTestCompile 'com.android.support:support-v4:24.2.1'
     androidTestAnnotationProcessor 'com.google.dagger:dagger-compiler:2.7'
+    androidTestCompile 'com.android.support.test.espresso:espresso-intents:2.2.2'
     androidTestCompile 'com.google.dagger:dagger:2.7'
 
 }

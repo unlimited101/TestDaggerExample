@@ -1,5 +1,6 @@
 package de.xappo.presenterinjection.view;
 
+import android.content.Intent;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.rule.ActivityTestRule;
 
@@ -13,6 +14,7 @@ import de.xappo.presenterinjection.base.AndroidApplication;
 import de.xappo.presenterinjection.di.components.DaggerTestActivityComponent;
 import de.xappo.presenterinjection.di.components.TestActivityComponent;
 import de.xappo.presenterinjection.di.modules.TestActivityModule;
+import de.xappo.presenterinjection.di.utils.ScopedInjector;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
@@ -26,7 +28,8 @@ import static org.hamcrest.Matchers.containsString;
 /**
  * Created by knoppik on 03.11.16.
  */
-public class MainActivityTest extends ActivityTest {
+public class MainActivityTest extends ActivityTest implements
+        ScopedInjector<TestActivityComponent> {
 
     @Rule
     public ActivityTestRule<MainActivity> mActivityRule = new ActivityTestRule(MainActivity.class, true, false);
@@ -46,15 +49,15 @@ public class MainActivityTest extends ActivityTest {
 //        mTestApplicationComponent.inject(this);
 //    }
 
-    // TODO: This approach does NOT work because mActivity.setActivityComponent() is called after MainInteractor has already been injected!
-    private void initializeInjector() {
-        mTestActivityComponent = DaggerTestActivityComponent.builder()
-                .testActivityModule(new TestActivityModule())
-                .build();
-
-        mActivity.setActivityComponent(mTestActivityComponent);
-        mTestActivityComponent.inject(this);
-    }
+//    // TODO: This approach does NOT work because mActivity.setActivityComponent() is called after MainInteractor has already been injected!
+//    private void initializeInjector() {
+//        mTestActivityComponent = DaggerTestActivityComponent.builder()
+//                .testActivityModule(new TestActivityModule())
+//                .build();
+//
+//        mActivity.setActivityComponent(mTestActivityComponent);
+//        mTestActivityComponent.inject(this);
+//    }
 
     public AndroidApplication getApp() {
         return (AndroidApplication) InstrumentationRegistry.getInstrumentation().getTargetContext().getApplicationContext();
@@ -65,16 +68,17 @@ public class MainActivityTest extends ActivityTest {
 //    public void setUp() throws Exception {
 //
 //        initializeInjector();
-//        mActivityRule.launchActivity(null);
-//        mActivity = mActivityRule.getActivity();
+//        activityRule.launchActivity(null);
+//        mActivity = activityRule.getActivity();
 //    }
 
     // TODO: That approach does not works because mActivity.setActivityComponent() is called after MainInteractor has already been injected!
     @Before
     public void setUp() throws Exception {
-        mActivityRule.launchActivity(null);
+//        super.setUp();
+        mActivityRule.launchActivity(new Intent(getApp(), MainActivity.class));
         mActivity = mActivityRule.getActivity();
-        initializeInjector();
+
     }
 
 
@@ -92,4 +96,8 @@ public class MainActivityTest extends ActivityTest {
         onView(withId(R.id.textview_greeting)).check(matches(withText(containsString("Hello John"))));
     }
 
+    @Override
+    public void injectWith(final TestActivityComponent graph) {
+        graph.inject(this);
+    }
 }
