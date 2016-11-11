@@ -10,10 +10,8 @@ import de.xappo.presenterinjection.base.BaseActivity;
 
 public class MainActivity extends BaseActivity implements MainFragment.OnFragmentInteractionListener {
 
-
     private static final String TAG = "MainActivity";
     private Fragment currentFragment;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,12 +22,10 @@ public class MainActivity extends BaseActivity implements MainFragment.OnFragmen
             currentFragment = new MainFragment();
             addFragment(R.id.fragmentContainer, currentFragment);
         }
-
     }
 
     @Override
     public void onFragmentInteraction(final Uri uri) {
-
     }
 
 }

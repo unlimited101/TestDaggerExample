@@ -5,12 +5,16 @@ import android.support.annotation.NonNull;
 
 import de.xappo.presenterinjection.di.components.TestActivityComponent;
 
-import static de.xappo.presenterinjection.base.Preconditions.checkState;
+import static de.xappo.presenterinjection.utils.Preconditions.checkState;
 
 /**
  * Created by knoppik on 11.11.16.
  */
 
+/**
+ * Because neither the Activity nor the ActivityTest can hold the TestActivityComponent (due to
+ * runtime order problems we need to hold it statically
+ **/
 public class TestActivityComponentHolder {
     private static TestActivityComponent sComponent;
     private static ComponentCreator sCreator;
@@ -20,8 +24,8 @@ public class TestActivityComponentHolder {
     }
 
     /**
-     * Configures an ComponentCreator that is used to create an activity graph. This should be done _before_ the activity is
-     * launched, usually in @Before or @BeforeClass.
+     * Configures an ComponentCreator that is used to create an activity graph. Shall be done
+     * _before_ the activity is launched, hence in @Before.
      *
      * @param creator The creator
      */
@@ -30,7 +34,7 @@ public class TestActivityComponentHolder {
     }
 
     /**
-     * Releases the static instances of our creator and graph. Useful for use in @After or @AfterClass.
+     * Releases the static instances of our creator and graph. Shall be used in @After.
      */
     public static void release() {
         sCreator = null;
@@ -38,10 +42,9 @@ public class TestActivityComponentHolder {
     }
 
     /**
-     * Returns a previously instantiated {@link TestActivityComponent} or creates a new one using the registered {@link
+     * Returns the {@link TestActivityComponent} or creates a new one using the registered {@link
      * ComponentCreator}
      *
-     * @return The component
      * @throws IllegalStateException if no creator has been registered before
      */
     @NonNull
@@ -55,9 +58,8 @@ public class TestActivityComponentHolder {
 
 
     /**
-     * Returns true if a custom activity graph creator was configured for the current test run; false otherwise
-     *
-     * @return True or false
+     * Returns true if a custom activity component creator was configured for the current test run,
+     * false otherwise
      */
     public static boolean hasComponentCreator() {
         return sCreator != null;
@@ -66,7 +68,6 @@ public class TestActivityComponentHolder {
     /**
      * Returns a previously instantiated {@link TestActivityComponent}.
      *
-     * @return The component
      * @throws IllegalStateException if none has been instantiated
      */
     @NonNull

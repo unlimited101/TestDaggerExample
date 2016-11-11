@@ -1,4 +1,4 @@
-package de.xappo.presenterinjection.di.utils;
+package de.xappo.presenterinjection.di.components;
 
 import de.xappo.presenterinjection.di.components.ActivityComponent;
 

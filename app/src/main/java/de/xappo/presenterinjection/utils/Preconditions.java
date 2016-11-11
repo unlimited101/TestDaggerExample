@@ -1,4 +1,4 @@
-package de.xappo.presenterinjection.base;
+package de.xappo.presenterinjection.utils;
 
 /**
  * Created by knoppik on 11.11.16.

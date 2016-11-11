@@ -7,6 +7,8 @@ import de.xappo.presenterinjection.base.AndroidApplication;
 import de.xappo.presenterinjection.di.components.ActivityComponent;
 import de.xappo.presenterinjection.di.components.ApplicationComponent;
 import de.xappo.presenterinjection.di.components.DaggerActivityComponent;
+import de.xappo.presenterinjection.di.components.HasComponent;
+import de.xappo.presenterinjection.di.components.InjectsComponent;
 import de.xappo.presenterinjection.di.modules.ActivityModule;
 
 /**
@@ -14,17 +16,27 @@ import de.xappo.presenterinjection.di.modules.ActivityModule;
  */
 public final class InjectorUtils {
 
+    //TODO: Optional: Implement for Fragment and View
+    /**
+     * Sets up the activity component and injects it
+     * @param activity
+     */
     public static void setUp(Activity activity) {
         setupWithContext(activity.getApplicationContext(), activity);
     }
 
+    //TODO: Optional: Support everything instead of Activity (Object instead)
+
+    @SuppressWarnings("unchecked")
     private static void setupWithContext(final Context context, final Activity activity) {
         //TODO: Optional: get scope from test class annotation
 
         AndroidApplication app = getApplication(context);
         ApplicationComponent applicationComponent = app.getApplicationComponent();
 
-        //TODO: Optional: Call injectWith for associated scope
+        //TODO: Optional: check scope
+
+        //TODO: Optional: Call injectComponent for associated scope
 
         ActivityComponent activityComponent = getOrCreateActivityComponent(activity);
         //TODO: Optional: Check if component can be injected by interface implementation check
@@ -37,6 +49,7 @@ public final class InjectorUtils {
     }
 
 
+    @SuppressWarnings("unchecked")
     private static ActivityComponent getOrCreateActivityComponent(final Activity activity) {
         HasComponent<ActivityComponent> holder = (HasComponent<ActivityComponent>) activity;
         if (holder.getComponent() == null) {

@@ -12,7 +12,7 @@ import de.xappo.presenterinjection.R;
 import de.xappo.presenterinjection.base.ActivityTest;
 import de.xappo.presenterinjection.base.AndroidApplication;
 import de.xappo.presenterinjection.di.components.TestActivityComponent;
-import de.xappo.presenterinjection.di.utils.InjectsComponent;
+import de.xappo.presenterinjection.di.components.InjectsComponent;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
@@ -30,10 +30,7 @@ public class MainActivityTest extends ActivityTest implements
         InjectsComponent<TestActivityComponent> {
 
     @Rule
-    public ActivityTestRule<MainActivity> mActivityRule = new ActivityTestRule(MainActivity.class, true, false);
-
-    private MainActivity mActivity;
-    private TestActivityComponent mTestActivityComponent;
+    public ActivityTestRule<MainActivity> mActivityRule = new ActivityTestRule<>(MainActivity.class, true, false);
 
     // TODO: That approach works
 //    private TestApplicationComponent mTestApplicationComponent;
@@ -73,12 +70,8 @@ public class MainActivityTest extends ActivityTest implements
     // TODO: That approach does not works because mActivity.setActivityComponent() is called after MainInteractor has already been injected!
     @Before
     public void setUp() throws Exception {
-//        super.setUp();
         mActivityRule.launchActivity(new Intent(getApp(), MainActivity.class));
-        mActivity = mActivityRule.getActivity();
-
     }
-
 
     @Test
     public void testOnClick_Fake() throws Exception {

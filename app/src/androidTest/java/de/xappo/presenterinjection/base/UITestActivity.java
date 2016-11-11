@@ -5,13 +5,15 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
 import de.xappo.presenterinjection.di.components.ActivityComponent;
-import de.xappo.presenterinjection.di.utils.HasComponent;
+import de.xappo.presenterinjection.di.components.HasComponent;
 
 /**
- * Created by knoppik on 11.11.16.
+ * Small Activity for Activity-UnitTests in order to receive an Activity object run with an
+ * IntentActivityRule
  */
 public class UITestActivity extends AppCompatActivity implements
         HasComponent<ActivityComponent> {
+
     private ActivityComponent mComponent;
 
     @Override

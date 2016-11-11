@@ -9,7 +9,7 @@ android {
         targetSdkVersion 24
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "de.xappo.presenterinjection.base.AndroidApplicationJUnitRunner"
+        testInstrumentationRunner "de.xappo.presenterinjection.runner.AndroidApplicationJUnitRunner"
     }
     buildTypes {
         release {

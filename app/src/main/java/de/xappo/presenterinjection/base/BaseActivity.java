@@ -12,9 +12,9 @@ import android.util.Log;
 import de.xappo.presenterinjection.R;
 import de.xappo.presenterinjection.di.components.ActivityComponent;
 import de.xappo.presenterinjection.di.components.ApplicationComponent;
-import de.xappo.presenterinjection.di.utils.HasComponent;
+import de.xappo.presenterinjection.di.components.HasComponent;
 import de.xappo.presenterinjection.di.utils.InjectorUtils;
-import de.xappo.presenterinjection.di.utils.InjectsComponent;
+import de.xappo.presenterinjection.di.components.InjectsComponent;
 
 /**
  * Created by knoppik on 27.10.16.
