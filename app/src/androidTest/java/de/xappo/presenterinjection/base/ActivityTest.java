@@ -6,16 +6,16 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 
-import de.xappo.presenterinjection.di.TestActivityGraphHolder;
+import de.xappo.presenterinjection.di.TestActivityComponentHolder;
 import de.xappo.presenterinjection.di.components.DaggerTestActivityComponent;
 import de.xappo.presenterinjection.di.components.TestActivityComponent;
 import de.xappo.presenterinjection.di.modules.TestActivityModule;
-import de.xappo.presenterinjection.di.utils.ScopedInjector;
+import de.xappo.presenterinjection.di.utils.InjectsComponent;
 
 /**
  * Created by knoppik on 11.11.16.
  */
-public class ActivityTest implements TestActivityGraphHolder.GraphCreator{
+public class ActivityTest implements TestActivityComponentHolder.ComponentCreator {
 
     @Rule
     public IntentsTestRule<UITestActivity> activityRule = new IntentsTestRule<>(UITestActivity.class, true, false);
@@ -25,7 +25,7 @@ public class ActivityTest implements TestActivityGraphHolder.GraphCreator{
 
     @Before
     public void createActivityGraphAndSetupView() {
-        TestActivityGraphHolder.setCreator(this);
+        TestActivityComponentHolder.setCreator(this);
         UITestActivity activity = getActivity();
         injectActivityGraph();
 
@@ -39,18 +39,18 @@ public class ActivityTest implements TestActivityGraphHolder.GraphCreator{
 
     @After
     public void cleanup() {
-        TestActivityGraphHolder.releaseCreatorAndGraph();
+        TestActivityComponentHolder.release();
     }
 
 
 
     private void injectActivityGraph() {
 
-        ((ScopedInjector<TestActivityComponent>) this).injectWith(TestActivityGraphHolder.getGraph());
+        ((InjectsComponent<TestActivityComponent>) this).injectWith(TestActivityComponentHolder.getComponent());
     }
 
     @Override
-    public TestActivityComponent createGraph(final Activity activity) {
+    public TestActivityComponent createComponent(final Activity activity) {
                 mTestActivityComponent = DaggerTestActivityComponent.builder()
                 .testActivityModule(new TestActivityModule())
                 .build();

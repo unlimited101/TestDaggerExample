@@ -12,15 +12,15 @@ import android.util.Log;
 import de.xappo.presenterinjection.R;
 import de.xappo.presenterinjection.di.components.ActivityComponent;
 import de.xappo.presenterinjection.di.components.ApplicationComponent;
-import de.xappo.presenterinjection.di.utils.ComponentHolder;
-import de.xappo.presenterinjection.di.utils.Injector;
-import de.xappo.presenterinjection.di.utils.ScopedInjector;
+import de.xappo.presenterinjection.di.utils.HasComponent;
+import de.xappo.presenterinjection.di.utils.InjectorUtils;
+import de.xappo.presenterinjection.di.utils.InjectsComponent;
 
 /**
  * Created by knoppik on 27.10.16.
  */
 public abstract class BaseActivity extends AppCompatActivity implements
-        ComponentHolder<ActivityComponent>, ScopedInjector<ActivityComponent> {
+        HasComponent<ActivityComponent>, InjectsComponent<ActivityComponent> {
 
     private static final String TAG = "BaseActivity";
 
@@ -29,9 +29,7 @@ public abstract class BaseActivity extends AppCompatActivity implements
     @Override
     protected void onCreate(@Nullable final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Injector.setUp(this);
-
-
+        InjectorUtils.setUp(this);
     }
 
     protected ApplicationComponent getApplicationComponent() {
@@ -67,8 +65,8 @@ public abstract class BaseActivity extends AppCompatActivity implements
     }
 
     @Override
-    public void injectWith(final ActivityComponent graph) {
-        graph.inject(this);
+    public void injectWith(final ActivityComponent component) {
+        component.inject(this);
     }
 
 }

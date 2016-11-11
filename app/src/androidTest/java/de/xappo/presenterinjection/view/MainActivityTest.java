@@ -11,10 +11,8 @@ import org.junit.Test;
 import de.xappo.presenterinjection.R;
 import de.xappo.presenterinjection.base.ActivityTest;
 import de.xappo.presenterinjection.base.AndroidApplication;
-import de.xappo.presenterinjection.di.components.DaggerTestActivityComponent;
 import de.xappo.presenterinjection.di.components.TestActivityComponent;
-import de.xappo.presenterinjection.di.modules.TestActivityModule;
-import de.xappo.presenterinjection.di.utils.ScopedInjector;
+import de.xappo.presenterinjection.di.utils.InjectsComponent;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
@@ -29,7 +27,7 @@ import static org.hamcrest.Matchers.containsString;
  * Created by knoppik on 03.11.16.
  */
 public class MainActivityTest extends ActivityTest implements
-        ScopedInjector<TestActivityComponent> {
+        InjectsComponent<TestActivityComponent> {
 
     @Rule
     public ActivityTestRule<MainActivity> mActivityRule = new ActivityTestRule(MainActivity.class, true, false);
@@ -97,7 +95,7 @@ public class MainActivityTest extends ActivityTest implements
     }
 
     @Override
-    public void injectWith(final TestActivityComponent graph) {
-        graph.inject(this);
+    public void injectWith(final TestActivityComponent component) {
+        component.inject(this);
     }
 }

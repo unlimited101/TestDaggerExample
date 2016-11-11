@@ -11,44 +11,44 @@ import static de.xappo.presenterinjection.base.Preconditions.checkState;
  * Created by knoppik on 11.11.16.
  */
 
-public class TestActivityGraphHolder {
+public class TestActivityComponentHolder {
     private static TestActivityComponent sComponent;
-    private static GraphCreator sCreator;
+    private static ComponentCreator sCreator;
 
-    public interface GraphCreator {
-        TestActivityComponent createGraph(Activity activity);
+    public interface ComponentCreator {
+        TestActivityComponent createComponent(Activity activity);
     }
 
     /**
-     * Configures an GraphCreator that is used to create an activity graph. This should be done _before_ the activity is
+     * Configures an ComponentCreator that is used to create an activity graph. This should be done _before_ the activity is
      * launched, usually in @Before or @BeforeClass.
      *
      * @param creator The creator
      */
-    public static void setCreator(GraphCreator creator) {
+    public static void setCreator(ComponentCreator creator) {
         sCreator = creator;
     }
 
     /**
      * Releases the static instances of our creator and graph. Useful for use in @After or @AfterClass.
      */
-    public static void releaseCreatorAndGraph() {
+    public static void release() {
         sCreator = null;
         sComponent = null;
     }
 
     /**
      * Returns a previously instantiated {@link TestActivityComponent} or creates a new one using the registered {@link
-     * GraphCreator}
+     * ComponentCreator}
      *
      * @return The component
      * @throws IllegalStateException if no creator has been registered before
      */
     @NonNull
-    public static TestActivityComponent getGraph(Activity activity) {
+    public static TestActivityComponent getComponent(Activity activity) {
         if (sComponent == null) {
             checkState(sCreator != null, "no creator registered");
-            sComponent = sCreator.createGraph(activity);
+            sComponent = sCreator.createComponent(activity);
         }
         return sComponent;
     }
@@ -59,7 +59,7 @@ public class TestActivityGraphHolder {
      *
      * @return True or false
      */
-    public static boolean hasGraphCreator() {
+    public static boolean hasComponentCreator() {
         return sCreator != null;
     }
 
@@ -70,7 +70,7 @@ public class TestActivityGraphHolder {
      * @throws IllegalStateException if none has been instantiated
      */
     @NonNull
-    public static TestActivityComponent getGraph() {
+    public static TestActivityComponent getComponent() {
         checkState(sComponent != null, "no component created");
         return sComponent;
     }

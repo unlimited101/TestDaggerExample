@@ -12,12 +12,10 @@ import de.xappo.presenterinjection.di.modules.ActivityModule;
 /**
  * Created by knoppik on 11.11.16.
  */
-public final class Injector {
+public final class InjectorUtils {
 
     public static void setUp(Activity activity) {
         setupWithContext(activity.getApplicationContext(), activity);
-
-
     }
 
     private static void setupWithContext(final Context context, final Activity activity) {
@@ -34,14 +32,13 @@ public final class Injector {
 
         //TODO: Optional: Return if successful
 
-        ((ScopedInjector<ActivityComponent>) activity).injectWith(activityComponent);
-
+        ((InjectsComponent<ActivityComponent>) activity).injectWith(activityComponent);
 
     }
 
 
     private static ActivityComponent getOrCreateActivityComponent(final Activity activity) {
-        ComponentHolder<ActivityComponent> holder = (ComponentHolder<ActivityComponent>) activity;
+        HasComponent<ActivityComponent> holder = (HasComponent<ActivityComponent>) activity;
         if (holder.getComponent() == null) {
             holder.setComponent(createActivityComponent(activity));
         }
@@ -53,13 +50,10 @@ public final class Injector {
                 .builder()
                 .activityModule(new ActivityModule())
                 .build();
-
     }
-
 
     private static AndroidApplication getApplication(Context context) {
         return (AndroidApplication) context.getApplicationContext();
     }
-
 
 }

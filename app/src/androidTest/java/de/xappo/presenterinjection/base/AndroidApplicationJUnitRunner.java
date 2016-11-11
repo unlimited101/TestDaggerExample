@@ -6,9 +6,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.test.runner.AndroidJUnitRunner;
 
-import de.xappo.presenterinjection.di.TestActivityGraphHolder;
+import de.xappo.presenterinjection.di.TestActivityComponentHolder;
 import de.xappo.presenterinjection.di.components.ActivityComponent;
-import de.xappo.presenterinjection.di.utils.ComponentHolder;
+import de.xappo.presenterinjection.di.utils.HasComponent;
 
 /**
  * Created by knoppik on 11.11.16.
@@ -25,12 +25,12 @@ public class AndroidApplicationJUnitRunner extends AndroidJUnitRunner {
     public Activity newActivity(ClassLoader cl, String className, Intent intent)
             throws InstantiationException, IllegalAccessException, ClassNotFoundException {
         Activity activity = super.newActivity(cl, className, intent);
-        return maybeStubActivityGraph(activity);
+        return swapActivityGraph(activity);
     }
 
     @SuppressWarnings("unchecked")
-    private Activity maybeStubActivityGraph(Activity activity) {
-        if (!(activity instanceof ComponentHolder) || !TestActivityGraphHolder.hasGraphCreator()) {
+    private Activity swapActivityGraph(Activity activity) {
+        if (!(activity instanceof HasComponent) || !TestActivityComponentHolder.hasComponentCreator()) {
             return activity;
         }
 
@@ -38,8 +38,8 @@ public class AndroidApplicationJUnitRunner extends AndroidJUnitRunner {
         // _all_ activities, however, this will lead to subtle crashes as we have to return the spy from
         // this method (i.e. a proxy) and this proxy will get the base context attached, not the actual
         // activity, see http://stackoverflow.com/questions/35495226/
-        ((ComponentHolder<ActivityComponent>) activity).
-                setComponent(TestActivityGraphHolder.getGraph(activity));
+        ((HasComponent<ActivityComponent>) activity).
+                setComponent(TestActivityComponentHolder.getComponent(activity));
         return activity;
     }
 }

@@ -5,7 +5,7 @@ import de.xappo.presenterinjection.di.components.ActivityComponent;
 /**
  * Created by knoppik on 11.11.16.
  */
-public interface ComponentHolder<T> {
+public interface HasComponent<T> {
 
     T getComponent();
 
