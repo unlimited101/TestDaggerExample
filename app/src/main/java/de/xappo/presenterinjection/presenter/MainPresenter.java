@@ -4,7 +4,6 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 
 import javax.inject.Inject;
-import javax.inject.Singleton;
 
 import de.xappo.presenterinjection.di.scopes.PerActivity;
 import de.xappo.presenterinjection.interactor.MainInteractor;
@@ -15,9 +14,6 @@ import de.xappo.presenterinjection.view.MainView;
  * Created by knoppik on 27.10.16.
  */
 
-// TODO: This worked before including the changes in MainActivityTest and ApplicationComponent
-//@Singleton
-// TODO: This approach is NOT working, see MainActvityTest
 @PerActivity
 public class MainPresenter implements MvpPresenter<MainView> {
     private static final String TAG = "MainPresenter";

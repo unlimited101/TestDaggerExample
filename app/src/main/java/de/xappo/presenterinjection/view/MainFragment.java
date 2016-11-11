@@ -11,7 +11,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import de.xappo.presenterinjection.base.AndroidApplication;
 import javax.inject.Inject;
 
 import de.xappo.presenterinjection.R;
@@ -35,9 +34,7 @@ public class MainFragment extends BaseFragment implements MainView {
     public void onCreate(Bundle savedInstanceState) {
         Log.i(TAG, "injectDagger onCreate()");
         super.onCreate(savedInstanceState);
-        // TODO: That approach works
-//        ((AndroidApplication)((MainActivity) getActivity()).getApplication()).getApplicationComponent().inject(this);
-        // TODO: This approach is NOT working, see MainActvityTest
+
         ((MainActivity) getActivity()).getComponent().inject(this);
     }
 

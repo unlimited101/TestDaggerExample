@@ -1,7 +1,5 @@
 package de.xappo.presenterinjection.di.components;
 
-import javax.inject.Singleton;
-
 import dagger.Component;
 import de.xappo.presenterinjection.base.BaseActivity;
 import de.xappo.presenterinjection.di.modules.ActivityModule;
@@ -15,9 +13,8 @@ import de.xappo.presenterinjection.view.MainFragment;
 @PerActivity
 @Component(modules = ActivityModule.class)
 public interface ActivityComponent {
-    // TODO: Comment this out for switching back to the old approach
     void inject(MainFragment mainFragment);
-    // TODO: Leave that for witching to the new approach
+
     void inject(MainActivity mainActivity);
 
     void inject(BaseActivity baseActivity);
