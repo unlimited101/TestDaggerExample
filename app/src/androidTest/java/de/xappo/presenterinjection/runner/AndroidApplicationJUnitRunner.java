@@ -5,11 +5,16 @@ import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.support.test.runner.AndroidJUnitRunner;
+import android.support.v4.app.Fragment;
 
+import de.xappo.presenterinjection.base.BaseActivity;
 import de.xappo.presenterinjection.base.TestAndroidApplication;
 import de.xappo.presenterinjection.di.TestActivityComponentHolder;
+import de.xappo.presenterinjection.di.TestFragmentComponentHolder;
 import de.xappo.presenterinjection.di.components.ActivityComponent;
+import de.xappo.presenterinjection.di.components.FragmentComponent;
 import de.xappo.presenterinjection.di.components.HasComponent;
+import de.xappo.presenterinjection.di.components.TestFragmentComponent;
 
 /**
  * Created by knoppik on 11.11.16.
@@ -41,6 +46,7 @@ public class AndroidApplicationJUnitRunner extends AndroidJUnitRunner {
 
         ((HasComponent<ActivityComponent>) activity).
                 setComponent(TestActivityComponentHolder.getComponent(activity));
+
         return activity;
     }
 }
