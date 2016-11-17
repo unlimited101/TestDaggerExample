@@ -11,8 +11,6 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
-import javax.annotation.concurrent.ThreadSafe;
-
 import de.xappo.presenterinjection.R;
 import de.xappo.presenterinjection.base.AndroidApplication;
 import de.xappo.presenterinjection.di.TestFragmentComponentHolder;

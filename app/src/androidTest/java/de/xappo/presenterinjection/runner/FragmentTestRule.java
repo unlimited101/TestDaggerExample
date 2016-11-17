@@ -47,21 +47,15 @@ public class FragmentTestRule<F extends Fragment> extends ActivityTestRule<UITes
         Log.w(TAG, "afterActivityLaunched() <<<< before commitment of Fragment");
         super.afterActivityLaunched();
 
-        getActivity().runOnUiThread(new Runnable() {
-            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-            @Override
-            public void run() {
 
-                //Instantiate and insert the fragment into the container layout
-                FragmentManager manager = getActivity().getSupportFragmentManager();
-                FragmentTransaction transaction = manager.beginTransaction();
+        //Instantiate and insert the fragment into the container layout
+        FragmentManager manager = getActivity().getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
 
-                transaction.replace(R.id.fragmentContainer, mFragment);
-                transaction.commit();
-                Log.w(TAG, "afterActivityLaunched() after commitment of Fragment >>>> ");
+        transaction.replace(R.id.fragmentContainer, mFragment);
+        transaction.commit();
+        Log.w(TAG, "afterActivityLaunched() after commitment of Fragment >>>> ");
 
-            }
-        });
     }
 
 
