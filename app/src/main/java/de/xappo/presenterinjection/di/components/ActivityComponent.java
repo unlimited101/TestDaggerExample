@@ -13,7 +13,6 @@ import de.xappo.presenterinjection.view.MainFragment;
 @PerActivity
 @Component(modules = ActivityModule.class)
 public interface ActivityComponent {
-    void inject(MainFragment mainFragment);
 
     void inject(MainActivity mainActivity);
 
