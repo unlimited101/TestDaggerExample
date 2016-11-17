@@ -6,7 +6,6 @@ import android.util.Log;
 import javax.inject.Inject;
 
 import de.xappo.presenterinjection.di.scopes.PerActivity;
-import de.xappo.presenterinjection.di.scopes.PerFragment;
 import de.xappo.presenterinjection.interactor.MainInteractor;
 import de.xappo.presenterinjection.model.Person;
 import de.xappo.presenterinjection.view.MainView;

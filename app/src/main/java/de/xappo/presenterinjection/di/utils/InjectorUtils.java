@@ -6,7 +6,6 @@ import android.support.v4.app.Fragment;
 
 import de.xappo.presenterinjection.base.AndroidApplication;
 import de.xappo.presenterinjection.base.BaseActivity;
-import de.xappo.presenterinjection.base.BaseFragment;
 import de.xappo.presenterinjection.di.components.ActivityComponent;
 import de.xappo.presenterinjection.di.components.ApplicationComponent;
 import de.xappo.presenterinjection.di.components.DaggerActivityComponent;
