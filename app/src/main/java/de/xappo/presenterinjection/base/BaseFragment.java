@@ -3,7 +3,6 @@ package de.xappo.presenterinjection.base;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 
-import de.xappo.presenterinjection.di.components.ActivityComponent;
 import de.xappo.presenterinjection.di.components.FragmentComponent;
 import de.xappo.presenterinjection.di.components.HasComponent;
 import de.xappo.presenterinjection.di.components.InjectsComponent;
