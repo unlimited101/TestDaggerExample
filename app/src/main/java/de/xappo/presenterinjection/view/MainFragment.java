@@ -3,7 +3,6 @@ package de.xappo.presenterinjection.view;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,8 +38,6 @@ public class MainFragment extends BaseFragment implements MainView {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        //((MainActivity)getActivity()).getComponent().inject(this);
     }
 
     @Override

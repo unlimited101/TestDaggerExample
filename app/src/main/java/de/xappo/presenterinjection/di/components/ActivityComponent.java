@@ -5,7 +5,6 @@ import de.xappo.presenterinjection.base.BaseActivity;
 import de.xappo.presenterinjection.di.modules.ActivityModule;
 import de.xappo.presenterinjection.di.scopes.PerActivity;
 import de.xappo.presenterinjection.view.MainActivity;
-import de.xappo.presenterinjection.view.MainFragment;
 
 /**
  * Created by knoppik on 08.11.16.

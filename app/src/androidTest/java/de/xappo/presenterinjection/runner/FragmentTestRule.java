@@ -1,17 +1,11 @@
 package de.xappo.presenterinjection.runner;
 
-import android.os.Build;
-import android.support.annotation.RequiresApi;
 import android.support.test.rule.ActivityTestRule;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
-
-import junit.framework.Assert;
 
 import de.xappo.presenterinjection.R;
-import de.xappo.presenterinjection.base.BaseActivity;
 import de.xappo.presenterinjection.base.UITestActivity;
 
 /**

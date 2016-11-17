@@ -10,7 +10,6 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
  * Created by knoppik on 08.11.16.
  */
 
-
 @Scope
 @Retention(RUNTIME)
 public @interface PerActivity {
