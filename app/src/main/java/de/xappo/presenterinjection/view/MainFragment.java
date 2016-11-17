@@ -47,20 +47,9 @@ public class MainFragment extends BaseFragment implements MainView {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
-        getComponent().inject(this);
-        Log.w(TAG, "testFragmentInjectDagger ***** onCreateView() after injection of Fragment  Component>>>> ");
 
+        Log.w(TAG, "testFragmentInjectDagger ***** onCreateView()");
         view = inflater.inflate(R.layout.fragment_main, container, false);
-
-        final EditText editText = (EditText) view.findViewById(R.id.edittext);
-        Button button = (Button) view.findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(final View v) {
-                MainFragment.this.onClick(editText.getText().toString());
-            }
-        });
-
         return view;
     }
 
@@ -70,7 +59,19 @@ public class MainFragment extends BaseFragment implements MainView {
 
     @Override
     public void onViewCreated(final View view, @Nullable final Bundle savedInstanceState) {
+        Log.w(TAG, "testFragmentInjectDagger ***** onViewCreated()");
         super.onViewCreated(view, savedInstanceState);
+        getComponent().inject(this);
+        Log.w(TAG, "testFragmentInjectDagger ***** onViewCreated() after injection of Fragment Component>>>> ");
+
+        final EditText editText = (EditText) view.findViewById(R.id.edittext);
+        Button button = (Button) view.findViewById(R.id.button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View v) {
+                MainFragment.this.onClick(editText.getText().toString());
+            }
+        });
         mainPresenter.attachView(this);
     }
 

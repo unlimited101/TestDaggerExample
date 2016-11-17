@@ -6,9 +6,12 @@ import android.support.test.InstrumentationRegistry;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
+
+import javax.annotation.concurrent.ThreadSafe;
 
 import de.xappo.presenterinjection.R;
 import de.xappo.presenterinjection.base.AndroidApplication;
@@ -66,6 +69,14 @@ public class MainFragmentTest implements
 
         Log.w(TAG, "testFragmentInjectDagger ***** setThingsUp() before injectFragmentGraph()");
         injectFragmentGraph();
+
+        waitForFragment(R.id.fragmentContainer, 5000);
+    }
+
+    @After
+    public void tearDown() throws  Exception {
+        TestFragmentComponentHolder.release();
+        mFragmentTestRule = null;
     }
 
     @SuppressWarnings("unchecked")
