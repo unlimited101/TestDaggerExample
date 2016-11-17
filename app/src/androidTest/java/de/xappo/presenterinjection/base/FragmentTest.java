@@ -16,34 +16,26 @@ import de.xappo.presenterinjection.di.modules.TestFragmentModule;
 /**
  * Created by knoppik on 17.11.16.
  */
-public class FragmentTest implements TestFragmentComponentHolder.ComponentCreator {
+public class FragmentTest  {
 
     @Rule
     public IntentsTestRule<UITestActivity> activityRule = new IntentsTestRule<>(UITestActivity.class, true, false);
 
     @Before
     public void createFragmentGraphAndSetupView() {
-        TestFragmentComponentHolder.setCreator(this);
+
         UITestActivity activity = getActivity();
-        injectFragmentGraph();
+
     }
     @After
     public void cleanUp() {
         TestFragmentComponentHolder.release();
     }
 
-    @SuppressWarnings("unchecked")
-    private void injectFragmentGraph() {
-        ((InjectsComponent<TestFragmentComponent>) this).injectWith(TestFragmentComponentHolder.getComponent());
-    }
 
 
-    @Override
-    public TestFragmentComponent createComponent(final Fragment fragment) {
-        return DaggerTestFragmentComponent.builder()
-                .testFragmentModule(new TestFragmentModule())
-                .build();
-    }
+
+
 
     private UITestActivity getActivity() {
         UITestActivity activity = activityRule.getActivity();
