@@ -48,11 +48,13 @@ public class MainFragmentTest extends FragmentTest implements
 
     @Before
     public void setUp() throws Exception {
+        TestFragmentComponentHolder.setCreator(this);
+
         mActivityRule.launchActivity(new Intent(getApp(), MainActivity.class));
         MainFragment fragment = (MainFragment) waitForFragment(R.id.fragmentContainer, 5500);
 
 
-        TestFragmentComponentHolder.setCreator(this);
+
 
 
 

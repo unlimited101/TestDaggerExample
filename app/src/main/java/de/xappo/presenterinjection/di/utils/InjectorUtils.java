@@ -92,6 +92,7 @@ public final class InjectorUtils {
         return holder.getComponent();
     }
 
+    @SuppressWarnings("unchecked")
     private static FragmentComponent getOrCreateFragmentComponent(final Fragment fragment) {
         HasComponent<FragmentComponent> holder = (HasComponent<FragmentComponent>) fragment;
         if (holder.getComponent() == null) {
