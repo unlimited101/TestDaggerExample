@@ -19,7 +19,7 @@ import de.xappo.presenterinjection.di.components.InjectsComponent;
 /**
  * Created by knoppik on 27.10.16.
  */
-public abstract class BaseActivity extends AppCompatActivity implements
+public abstract class  BaseActivity extends AppCompatActivity implements
         HasComponent<ActivityComponent>, InjectsComponent<ActivityComponent> {
 
     private static final String TAG = "BaseActivity";
