@@ -40,8 +40,6 @@ public class MainFragment extends BaseFragment implements MainView {
     public void onCreate(Bundle savedInstanceState) {
         Log.w(TAG, "testFragmentInjectDagger ***** onCreate()");
         super.onCreate(savedInstanceState);
-        getComponent().inject(this);
-        Log.w(TAG, "testFragmentInjectDagger ***** onCreate() after injection of Fragment  Component>>>> ");
 
         //((MainActivity)getActivity()).getComponent().inject(this);
     }
@@ -49,6 +47,8 @@ public class MainFragment extends BaseFragment implements MainView {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
+        getComponent().inject(this);
+        Log.w(TAG, "testFragmentInjectDagger ***** onCreateView() after injection of Fragment  Component>>>> ");
 
         view = inflater.inflate(R.layout.fragment_main, container, false);
 
