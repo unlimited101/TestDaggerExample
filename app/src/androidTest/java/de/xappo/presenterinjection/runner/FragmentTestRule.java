@@ -27,8 +27,8 @@ public class FragmentTestRule<F extends Fragment> extends ActivityTestRule<UITes
     }
 
     @Override
-    protected void afterActivityLaunched() {
-        super.afterActivityLaunched();
+    protected void beforeActivityLaunched() {
+        super.beforeActivityLaunched();
         try {
             mFragment = mFragmentClass.newInstance();
         } catch (InstantiationException e) {
@@ -36,6 +36,12 @@ public class FragmentTestRule<F extends Fragment> extends ActivityTestRule<UITes
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    protected void afterActivityLaunched() {
+        super.afterActivityLaunched();
+
         getActivity().runOnUiThread(new Runnable() {
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override

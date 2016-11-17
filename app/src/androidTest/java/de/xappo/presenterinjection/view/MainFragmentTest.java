@@ -48,7 +48,16 @@ public class MainFragmentTest implements
     public void setUp() throws Exception {
         TestFragmentComponentHolder.setCreator(this);
 
+
+        seTThingsUp();
+    }
+
+    private synchronized void seTThingsUp() {
+
+
+
         mFragmentTestRule.launchActivity(null);
+
 
         MainFragment fragment = mFragmentTestRule.getFragment();
 
@@ -56,7 +65,6 @@ public class MainFragmentTest implements
                 setComponent(TestFragmentComponentHolder.getComponent(fragment));
 
         injectFragmentGraph();
-
     }
 
     @SuppressWarnings("unchecked")
