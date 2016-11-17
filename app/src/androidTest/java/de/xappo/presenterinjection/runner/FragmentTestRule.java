@@ -6,6 +6,7 @@ import android.support.test.rule.ActivityTestRule;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 
 import junit.framework.Assert;
 
@@ -18,6 +19,7 @@ import de.xappo.presenterinjection.base.UITestActivity;
  */
 
 public class FragmentTestRule<F extends Fragment> extends ActivityTestRule<UITestActivity> {
+    private static final String TAG = "FragmentTestRule";
     private final Class<F> mFragmentClass;
     private F mFragment;
 
@@ -28,9 +30,11 @@ public class FragmentTestRule<F extends Fragment> extends ActivityTestRule<UITes
 
     @Override
     protected void beforeActivityLaunched() {
+        Log.w(TAG, "testFragmentInjectDagger ***** beforeActivityLaunched() <<<< before instantiation of Fragment");
         super.beforeActivityLaunched();
         try {
             mFragment = mFragmentClass.newInstance();
+            Log.w(TAG, "testFragmentInjectDagger ***** beforeActivityLaunched() after instantiation of Fragment >>>> ");
         } catch (InstantiationException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e) {
@@ -40,6 +44,7 @@ public class FragmentTestRule<F extends Fragment> extends ActivityTestRule<UITes
 
     @Override
     protected void afterActivityLaunched() {
+        Log.w(TAG, "afterActivityLaunched() <<<< before commitment of Fragment");
         super.afterActivityLaunched();
 
         getActivity().runOnUiThread(new Runnable() {
@@ -53,6 +58,7 @@ public class FragmentTestRule<F extends Fragment> extends ActivityTestRule<UITes
 
                 transaction.replace(R.id.fragmentContainer, mFragment);
                 transaction.commit();
+                Log.w(TAG, "afterActivityLaunched() after commitment of Fragment >>>> ");
 
             }
         });

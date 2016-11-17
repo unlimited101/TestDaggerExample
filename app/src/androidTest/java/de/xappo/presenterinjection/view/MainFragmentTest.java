@@ -1,10 +1,10 @@
 package de.xappo.presenterinjection.view;
 
-import android.content.Intent;
 import android.os.SystemClock;
 import android.support.annotation.IdRes;
 import android.support.test.InstrumentationRegistry;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 
 import org.junit.Before;
 import org.junit.Rule;
@@ -12,7 +12,6 @@ import org.junit.Test;
 
 import de.xappo.presenterinjection.R;
 import de.xappo.presenterinjection.base.AndroidApplication;
-import de.xappo.presenterinjection.base.FragmentTest;
 import de.xappo.presenterinjection.di.TestFragmentComponentHolder;
 import de.xappo.presenterinjection.di.components.DaggerTestFragmentComponent;
 import de.xappo.presenterinjection.di.components.FragmentComponent;
@@ -37,6 +36,7 @@ import static org.hamcrest.Matchers.containsString;
 public class MainFragmentTest implements
         InjectsComponent<TestFragmentComponent>, TestFragmentComponentHolder.ComponentCreator {
 
+    private static final String TAG = "MainFragmentTest";
     @Rule
     public FragmentTestRule<MainFragment> mFragmentTestRule = new FragmentTestRule<>(MainFragment.class);
 
@@ -49,21 +49,22 @@ public class MainFragmentTest implements
         TestFragmentComponentHolder.setCreator(this);
 
 
-        seTThingsUp();
+        setThingsUp();
     }
 
-    private synchronized void seTThingsUp() {
+    private synchronized void setThingsUp() {
 
-
-
+        Log.w(TAG, "testFragmentInjectDagger ***** setThingsUp() before mFragmentTestRule.launchActivity(null)");
         mFragmentTestRule.launchActivity(null);
 
-
+        Log.w(TAG, "testFragmentInjectDagger ***** setThingsUp() before mFragmentTestRule.getFragment()");
         MainFragment fragment = mFragmentTestRule.getFragment();
 
+        Log.w(TAG, "testFragmentInjectDagger ***** setThingsUp() before setComponent()");
         ((HasComponent<FragmentComponent>) fragment).
                 setComponent(TestFragmentComponentHolder.getComponent(fragment));
 
+        Log.w(TAG, "testFragmentInjectDagger ***** setThingsUp() before injectFragmentGraph()");
         injectFragmentGraph();
     }
 

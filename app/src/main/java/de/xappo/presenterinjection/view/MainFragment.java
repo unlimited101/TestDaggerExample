@@ -38,10 +38,11 @@ public class MainFragment extends BaseFragment implements MainView {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        Log.i(TAG, "injectDagger onCreate()");
+        Log.w(TAG, "testFragmentInjectDagger ***** onCreate()");
         super.onCreate(savedInstanceState);
-
         getComponent().inject(this);
+        Log.w(TAG, "testFragmentInjectDagger ***** onCreate() after injection of Fragment  Component>>>> ");
+
         //((MainActivity)getActivity()).getComponent().inject(this);
     }
 
