@@ -26,6 +26,12 @@ public class MainFragment extends BaseFragment implements MainView {
     MainPresenter mainPresenter;
     private View view;
 
+    // TODO: Rename and change types and number of parameters
+    public static MainFragment newInstance() {
+        MainFragment fragment = new MainFragment();
+        return fragment;
+    }
+
     public MainFragment() {
         // Required empty public constructor
     }
