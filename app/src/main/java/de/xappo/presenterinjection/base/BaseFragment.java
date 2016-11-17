@@ -32,7 +32,6 @@ public class BaseFragment extends Fragment implements
 
     @Override
     public void setComponent(final FragmentComponent component) {
-        Log.w(TAG, "injectDagger Only call this method to swap test doubles");
         this.fragmentComponent = component;
     }
 

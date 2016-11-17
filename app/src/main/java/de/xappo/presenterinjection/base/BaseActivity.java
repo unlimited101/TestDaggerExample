@@ -60,7 +60,6 @@ public abstract class  BaseActivity extends AppCompatActivity implements
     @VisibleForTesting
     @Override
     public void setComponent(final ActivityComponent component) {
-        Log.w(TAG, "injectDagger Only call this method to swap test doubles");
         this.activityComponent = component;
     }
 

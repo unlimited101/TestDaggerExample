@@ -16,8 +16,6 @@ import de.xappo.presenterinjection.di.components.HasComponent;
 public class UITestActivity extends BaseActivity implements
         HasComponent<ActivityComponent> {
 
-
-
     @Override
     protected void onCreate(@Nullable final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,7 +23,4 @@ public class UITestActivity extends BaseActivity implements
         frameLayout.setId(R.id.fragmentContainer);
         setContentView(frameLayout);
     }
-
-
-
 }

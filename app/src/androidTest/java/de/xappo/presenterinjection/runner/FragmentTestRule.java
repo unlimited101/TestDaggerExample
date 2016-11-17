@@ -30,11 +30,9 @@ public class FragmentTestRule<F extends Fragment> extends ActivityTestRule<UITes
 
     @Override
     protected void beforeActivityLaunched() {
-        Log.w(TAG, "testFragmentInjectDagger ***** beforeActivityLaunched() <<<< before instantiation of Fragment");
         super.beforeActivityLaunched();
         try {
             mFragment = mFragmentClass.newInstance();
-            Log.w(TAG, "testFragmentInjectDagger ***** beforeActivityLaunched() after instantiation of Fragment >>>> ");
         } catch (InstantiationException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e) {
@@ -44,7 +42,6 @@ public class FragmentTestRule<F extends Fragment> extends ActivityTestRule<UITes
 
     @Override
     protected void afterActivityLaunched() {
-        Log.w(TAG, "afterActivityLaunched() <<<< before commitment of Fragment");
         super.afterActivityLaunched();
 
 
@@ -54,8 +51,6 @@ public class FragmentTestRule<F extends Fragment> extends ActivityTestRule<UITes
 
         transaction.replace(R.id.fragmentContainer, mFragment);
         transaction.commit();
-        Log.w(TAG, "afterActivityLaunched() after commitment of Fragment >>>> ");
-
     }
 
 

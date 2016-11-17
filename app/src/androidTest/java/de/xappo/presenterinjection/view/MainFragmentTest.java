@@ -55,17 +55,13 @@ public class MainFragmentTest implements
 
     private synchronized void setThingsUp() {
 
-        Log.w(TAG, "testFragmentInjectDagger ***** setThingsUp() before mFragmentTestRule.launchActivity(null)");
         mFragmentTestRule.launchActivity(null);
 
-        Log.w(TAG, "testFragmentInjectDagger ***** setThingsUp() before mFragmentTestRule.getFragment()");
         MainFragment fragment = mFragmentTestRule.getFragment();
 
-        Log.w(TAG, "testFragmentInjectDagger ***** setThingsUp() before setComponent()");
         ((HasComponent<FragmentComponent>) fragment).
                 setComponent(TestFragmentComponentHolder.getComponent(fragment));
 
-        Log.w(TAG, "testFragmentInjectDagger ***** setThingsUp() before injectFragmentGraph()");
         injectFragmentGraph();
 
         waitForFragment(R.id.fragmentContainer, 5000);
